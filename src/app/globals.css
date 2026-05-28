@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* 主色系 — 深棕（取自 Logo 深色） */
+  --color-primary-50: #faf5f0;
+  --color-primary-100: #f0e4d8;
+  --color-primary-200: #e0c9b1;
+  --color-primary-300: #c9a685;
+  --color-primary-400: #a87d5a;
+  --color-primary-500: #7d5a3a;
+  --color-primary-600: #6b4a2e;
+  --color-primary-700: #5c3d25;
+  --color-primary-800: #4a301e;
+  --color-primary-900: #3a2518;
+
+  /* 金色系 — 暖金（取自 Logo 背景色） */
+  --color-gold-50: #fdf9ef;
+  --color-gold-100: #f8efd5;
+  --color-gold-200: #f0dfa8;
+  --color-gold-300: #e8cf7a;
+  --color-gold-400: #e0c05a;
+  --color-gold-500: #d4a83a;
+  --color-gold-600: #b8902e;
+  --color-gold-700: #8f7025;
+  --color-gold-800: #6b541e;
+  --color-gold-900: #4a3a15;
+
+  /* 朱砂红 — CTA 强调色 */
+  --color-cinnabar-50: #fdf2f2;
+  --color-cinnabar-100: #fce4e4;
+  --color-cinnabar-200: #f9bfbf;
+  --color-cinnabar-300: #f39999;
+  --color-cinnabar-400: #e74c3c;
+  --color-cinnabar-500: #c0392b;
+  --color-cinnabar-600: #a93226;
+  --color-cinnabar-700: #8c2a1f;
+  --color-cinnabar-800: #702219;
+  --color-cinnabar-900: #541a13;
+
+  /* 暖灰 — 背景/中性色 */
+  --color-warm-50: #faf7f2;
+  --color-warm-100: #f5f0e8;
+  --color-warm-200: #ede5d6;
+  --color-warm-300: #ddd2bb;
+  --color-warm-400: #c9b89a;
+  --color-warm-500: #b5a07e;
+  --color-warm-600: #9a8565;
+  --color-warm-700: #7d6b51;
+  --color-warm-800: #60523d;
+  --color-warm-900: #433a2b;
+
+  /* 墨色 — 文字 */
+  --color-ink-50: #f6f6f6;
+  --color-ink-100: #e7e7e7;
+  --color-ink-200: #d1d1d1;
+  --color-ink-300: #b0b0b0;
+  --color-ink-400: #8c8c8c;
+  --color-ink-500: #6d6d6d;
+  --color-ink-600: #5d5d5d;
+  --color-ink-700: #4f4f4f;
+  --color-ink-800: #3d3d3d;
+  --color-ink-900: #2c2c2c;
+  --color-ink-950: #1a1a1a;
+
+  --font-serif: var(--font-noto-serif-sc), "Noto Serif SC", "Songti SC", serif;
+  --font-sans: var(--font-noto-sans-sc), "Noto Sans SC", "PingFang SC", system-ui, sans-serif;
+}
+
+/* 基础样式 */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-warm-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+}
+
+::selection {
+  background-color: var(--color-gold-200);
+  color: var(--color-primary-900);
+}
+
+/* 容器工具类 */
+@layer utilities {
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
