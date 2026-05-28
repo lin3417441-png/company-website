@@ -45,6 +45,7 @@ export default function ContactPage() {
               { q: '中医院/门诊可以代煎中药吗？', a: '各网点均提供专业中药代煎服务，支持门店自提与快递邮寄，方便您灵活取药。' },
               { q: '如何联系药食同源门店（食养小屋）', a: '地址：思明区湖滨南路8-2能仁堂食养小屋 电话：13860424145' },
               { q: '研学课程如何报名？', a: '您可以通过电话或微信公众号联系我们，会为您安排合适的课程。' },
+              { q: '每个门店都可以使用医保吗？', a: '是的，每个门店均可使用医保，具体政策可以查询医保网站或联系我们，门店会为您清晰解答。' },
             ].map((faq) => (
               <details key={faq.q} className="group rounded-md border border-warm-200 bg-warm-50 p-4">
                 <summary className="cursor-pointer font-serif font-bold text-ink-900 marker:text-primary-500">

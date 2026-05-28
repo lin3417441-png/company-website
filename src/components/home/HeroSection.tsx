@@ -25,7 +25,7 @@ export default function HeroSection() {
           <h1 className="font-serif text-4xl font-bold tracking-wider text-white sm:text-5xl lg:text-6xl">
             能仁堂集团
           </h1>
-          <p className="mt-2 text-lg tracking-[0.3em] text-gold-300 sm:text-xl">
+          <p className="mt-4 text-lg tracking-[0.3em] text-gold-300 sm:text-xl">
             能者爱人 · 医者仁心
           </p>
         </motion.div>
@@ -34,7 +34,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-warm-200 sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-lg leading-loose tracking-wider text-warm-200 sm:text-xl"
         >
           传承精华，守正创新 — 集医疗诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团
         </motion.p>
