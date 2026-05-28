@@ -1,14 +1,15 @@
 'use client'
 
 import AnimatedSection from '@/components/ui/AnimatedSection'
-import { MapPin, Phone, Mail, Clock } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Search } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
 
 const info = [
   { icon: MapPin, label: '集团地址', value: SITE_CONFIG.address },
   { icon: Phone, label: '咨询电话', value: SITE_CONFIG.phone },
   { icon: Mail, label: '电子邮箱', value: SITE_CONFIG.email },
-  { icon: Clock, label: '工作时间', value: '周一至周日 8:00 - 20:00' },
+  { icon: Clock, label: '工作时间', value: '周一至周日 9:00 - 18:00' },
+  { icon: Search, label: '美团搜索', value: '美团搜索"能仁堂"也可找到我们' },
 ]
 
 export default function ContactInfo() {

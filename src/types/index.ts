@@ -35,8 +35,6 @@ export interface Course {
   id: number
   name: string
   description: string
-  schedule: string
-  location: string
 }
 
 export interface FeatureProject {

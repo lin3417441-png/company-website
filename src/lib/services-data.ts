@@ -33,8 +33,8 @@ export const testimonials: Testimonial[] = [
 ]
 
 export const courses: Course[] = [
-  { id: 1, name: '中医基础体验课', description: '了解中医望闻问切四诊法，体验把脉和舌诊，感受中医魅力。', schedule: '每周六 10:00-12:00', location: '能仁堂研学中心' },
-  { id: 2, name: '二十四节气养生讲座', description: '跟随节气变化，学习应季养生方法，掌握食疗和穴位保健技巧。', schedule: '每月节气日 14:00-16:00', location: '能仁堂研学中心' },
-  { id: 3, name: '中药香囊制作工坊', description: '亲手制作中药香囊，了解常见中药材功效，体验传统中医药文化。', schedule: '每周日 14:00-16:00', location: '能仁堂研学中心' },
-  { id: 4, name: '小儿推拿家长课堂', description: '学习常用小儿推拿手法，帮助家长在家为孩子进行日常保健。', schedule: '每月第一个周六 10:00-12:00', location: '能仁堂研学中心' },
+  { id: 1, name: '中医基础体验课', description: '了解中医望闻问切四诊法，体验把脉和舌诊，感受中医魅力。' },
+  { id: 2, name: '二十四节气养生讲座', description: '跟随节气变化，学习应季养生方法，掌握食疗和穴位保健技巧。' },
+  { id: 3, name: '中药香囊制作工坊', description: '亲手制作中药香囊，了解常见中药材功效，体验传统中医药文化。' },
+  { id: 4, name: '小儿推拿家长课堂', description: '学习常用小儿推拿手法，帮助家长在家为孩子进行日常保健。' },
 ]

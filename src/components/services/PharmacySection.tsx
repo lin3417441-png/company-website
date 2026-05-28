@@ -14,7 +14,7 @@ const otherServices = [
   },
   {
     icon: Leaf,
-    title: '药食同源门店',
+    title: '药食同源门店（食养小屋）',
     desc: '秉承"药食同源"理念，将中医食养智慧与现代营养科学融合，提供个性化食疗方案。',
     color: 'bg-gold-100 text-gold-600',
   },

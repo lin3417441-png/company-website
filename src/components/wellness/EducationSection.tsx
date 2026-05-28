@@ -4,7 +4,6 @@ import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Button from '@/components/ui/Button'
 import { courses } from '@/lib/services-data'
-import { MapPin, Calendar } from 'lucide-react'
 
 export default function EducationSection() {
   return (
@@ -32,16 +31,6 @@ export default function EducationSection() {
                 <p className="mt-2 text-sm leading-relaxed text-ink-500">
                   {course.description}
                 </p>
-                <div className="mt-4 space-y-1 text-xs text-ink-400">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={12} className="text-primary-500" />
-                    {course.schedule}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={12} className="text-primary-500" />
-                    {course.location}
-                  </div>
-                </div>
               </div>
             </AnimatedSection>
           ))}

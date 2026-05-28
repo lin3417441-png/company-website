@@ -27,12 +27,12 @@ export default function TherapySection() {
   return (
     <section className="section-padding bg-warm-50">
       <div className="container-custom">
-        <SectionTitle title="药食同源门店" subtitle="药食同源，以食为养" />
+        <SectionTitle title="药食同源门店（食养小屋）" subtitle="药食同源，以食为养" />
 
         <AnimatedSection>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-ink-600 leading-relaxed">
-              能仁堂药食同源门店秉承"药食同源"的传统理念，将中医食养智慧与现代营养科学相融合，
+              能仁堂药食同源门店（食养小屋）秉承"药食同源"的传统理念，将中医食养智慧与现代营养科学相融合，
               为您提供个性化的食疗方案和养生指导，让忙碌的现代人也能轻松享受科学的大健康生活方式。
             </p>
           </div>

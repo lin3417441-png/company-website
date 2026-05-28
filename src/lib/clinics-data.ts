@@ -8,7 +8,7 @@ export const clinics: Clinic[] = [
     address: '厦门市思明区湖滨南路8-2-1',
     phone: '0592-5156156',
     specialties: ['体质调理', '女性康养', '睡眠调理'],
-    hours: '周一至周日 8:00-20:00',
+    hours: '周一至周日 9:00-18:00',
     description: '能仁堂旗舰门诊部，由多位三甲医院退休主任级专家领衔坐诊，提供全方位中医诊疗服务。',
     type: 'clinic',
   },
@@ -70,7 +70,7 @@ export const clinics: Clinic[] = [
   {
     id: '7',
     slug: 'food-therapy',
-    name: '能仁堂药食同源门店',
+    name: '能仁堂药食同源门店（食养小屋）',
     address: '厦门市',
     phone: '',
     specialties: ['节气食养', '养生茶饮', '体质食疗'],
