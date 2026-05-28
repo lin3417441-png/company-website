@@ -55,7 +55,7 @@ export default function PharmacySection() {
         {/* 药房特色 */}
         <AnimatedSection>
           <div className="mt-12 rounded-md bg-primary-50 p-8">
-            <h3 className="mb-6 text-center font-serif text-xl font-bold text-ink-900">大药房特色服务</h3>
+            <h3 className="mb-6 text-center font-serif text-xl font-bold text-ink-900">药房特色服务</h3>
             <div className="grid gap-6 sm:grid-cols-3">
               {pharmacyFeatures.map((f, i) => (
                 <div key={f.title} className="flex items-center gap-3">

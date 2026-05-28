@@ -45,7 +45,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
           className="mt-10"
         >
-          <Button href="/about" variant="primary" size="lg">
+          <Button href="/about" variant="secondary" size="lg">
             了解更多
           </Button>
         </motion.div>
