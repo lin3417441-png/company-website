@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_CONFIG.url}/pharmacy`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_CONFIG.url}/wellness`,
       lastModified: new Date(),
       changeFrequency: 'monthly',

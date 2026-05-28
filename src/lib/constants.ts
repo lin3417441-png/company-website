@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: '能仁堂集团',
   slogan: '能者爱人，医者仁心',
-  description: '能仁堂集团是一家集中医诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团，致力于推动中医药健康文化的创造性转化与创新性发展。',
+  description: '能仁堂集团致力于推动中医药健康文化的创造性转化与创新性发展。是一家集中医诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团',
   url: 'https://www.nengrentang.com',
   address: '厦门市思明区湖滨南路8-2-1',
   phone: '0592-5156156',
@@ -14,6 +14,7 @@ export const NAV_LINKS = [
   { href: '/', label: '首页' },
   { href: '/about', label: '关于我们' },
   { href: '/services', label: '医疗服务' },
+  { href: '/pharmacy', label: '能仁堂药业' },
   { href: '/wellness', label: '食养研学' },
   { href: '/contact', label: '联系我们' },
 ]
