@@ -56,13 +56,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* 公众号占位 */}
+          {/* 公众号 */}
           <div>
             <h4 className="font-serif text-lg font-semibold text-warm-100">
               关注我们
             </h4>
-            <div className="mt-4 flex h-32 w-32 items-center justify-center rounded-md bg-warm-800 text-sm text-warm-500">
-              微信公众号
+            <div className="mt-4">
+              <Image
+                src="/wechat-qr.jpg"
+                alt="微信公众号二维码"
+                width={128}
+                height={128}
+                className="rounded-md"
+              />
+              <p className="mt-2 text-sm text-warm-500">微信公众号</p>
             </div>
           </div>
         </div>
