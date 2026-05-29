@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import StorySection from '@/components/about/StorySection'
 import ValuesSection from '@/components/about/ValuesSection'
 import TimelineSection from '@/components/about/TimelineSection'
-import TeamSection from '@/components/about/TeamSection'
+
 import QualificationsSection from '@/components/about/QualificationsSection'
 import { SITE_CONFIG } from '@/lib/constants'
 
@@ -34,7 +34,6 @@ export default function AboutPage() {
       <StorySection />
       <ValuesSection />
       <TimelineSection />
-      <TeamSection />
       <QualificationsSection />
     </>
   )
