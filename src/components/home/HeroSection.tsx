@@ -26,7 +26,7 @@ export default function HeroSection() {
             能仁堂集团
           </h1>
           <p className="mt-4 text-lg tracking-[0.3em] text-gold-300 sm:text-xl">
-            能者爱人 · 医者仁心
+            能仁大愿 · 仁心仁术
           </p>
         </motion.div>
 

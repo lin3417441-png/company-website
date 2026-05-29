@@ -13,7 +13,7 @@ export default function StorySection() {
           <AnimatedSection direction="left">
             <div className="space-y-4 text-ink-600 leading-relaxed">
               <p>
-                能仁堂集团2016年在美丽的鹭岛厦门成立。集团自创立伊始便始终恪守"仁心仁术，治病救人"的初心宗旨，深耕中医药健康领域。
+                能仁堂集团2016年在美丽的鹭岛厦门成立。集团自创立伊始便始终恪守"能仁大愿，仁心仁术"的初心宗旨，深耕中医药健康领域。
               </p>
               <p>
                 现已发展成为拥有四家名医荟萃的综合门诊部、一家功能科室齐全的二级中医院、两家中医药研学中心及一家有多项自主专利的健康科技公司于一体的综合医疗集团，

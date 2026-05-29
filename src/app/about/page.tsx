@@ -21,7 +21,7 @@ export default function AboutPage() {
             关于能仁堂
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-gold-300">
-            仁心仁术，治病救人 — 传承精华，守正创新
+            能仁大愿，仁心仁术 — 传承精华，守正创新
           </p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">

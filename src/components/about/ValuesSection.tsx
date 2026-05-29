@@ -8,7 +8,7 @@ const values = [
   {
     icon: Heart,
     title: '仁心仁术',
-    description: '以仁爱之心为本，以专业之术为用，恪守"仁心仁术，治病救人"的初心宗旨。',
+    description: '以仁爱之心为本，以专业之术为用，恪守"能仁大愿，仁心仁术"的初心宗旨。',
   },
   {
     icon: Lightbulb,
@@ -17,7 +17,7 @@ const values = [
   },
   {
     icon: Shield,
-    title: '能者爱人',
+    title: '能仁大愿',
     description: '以精湛医术与贴心服务守护大众身心健康，践行"以健康为中心"的理念。',
   },
   {

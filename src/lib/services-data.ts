@@ -4,7 +4,7 @@ import { FEATURE_PROJECTS } from './constants'
 export { FEATURE_PROJECTS }
 
 export const timeline: TimelineEvent[] = [
-  { year: '2016', title: '能仁堂创立', description: '丙申年，能仁堂在美丽的鹭岛厦门应运而生，秉持"仁心仁术，治病救人"的初心宗旨。' },
+  { year: '2016', title: '能仁堂创立', description: '丙申年，能仁堂在美丽的鹭岛厦门应运而生，秉持"能仁大愿，仁心仁术"的初心宗旨。' },
   { year: '2018', title: '门诊扩展', description: '先后开设多家门诊部，汇聚超百位资深医师，由多位三甲医院退休主任级专家领衔坐诊。' },
   { year: '2020', title: '中医院成立', description: '能仁堂中医院正式运营，成为二级中医院，提供更全面的中医诊疗服务。' },
   { year: '2022', title: '研学中心', description: '两个中医药研学中心投入运营，搭建医道文化传播平台，培育中医新生力量。' },
