@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -30,9 +31,7 @@ export default function Header() {
     >
       <div className="container-custom flex h-16 items-center justify-between sm:h-20">
         <Link href="/" className="flex items-center gap-2">
-          <span className="font-calligraphy text-2xl text-primary-700 sm:text-3xl">
-            能仁堂
-          </span>
+          <Image src="/logo.png" alt="能仁堂" width={40} height={40} className="h-8 w-auto sm:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-2 md:flex" onMouseLeave={() => setHoveredPath(null)}>
