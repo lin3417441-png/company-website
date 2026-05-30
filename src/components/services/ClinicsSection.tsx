@@ -16,7 +16,7 @@ export default function ClinicsSection() {
         {/* 二级中医院 */}
         {hospital && (
           <AnimatedSection>
-            <div className="mb-12 rounded-md border-2 border-gold-300 bg-white p-8 shadow-sm">
+            <div className="mb-12 rounded-lg border-2 border-gold-300 bg-warm-50 p-8 shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="shrink-0 rounded-lg bg-gold-100 p-3">
                   <Building2 size={28} className="text-gold-600" />
@@ -51,7 +51,7 @@ export default function ClinicsSection() {
         <div className="grid gap-6 sm:grid-cols-2">
           {outpatientClinics.map((clinic, i) => (
             <AnimatedSection key={clinic.id} delay={i * 0.1}>
-              <div className="h-full rounded-md bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md">
+              <div className="h-full rounded-lg bg-warm-50 p-6 shadow-sm transition-all duration-300 hover:shadow-md">
                 <h3 className="font-serif text-xl font-bold text-ink-900">
                   {clinic.name}
                 </h3>

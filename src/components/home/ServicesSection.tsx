@@ -38,7 +38,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-warm-50">
       <div className="container-custom">
         <SectionTitle title="全产业链生态" subtitle="医疗诊疗 · 康复疗养 · 文化研学 · 健康科技" />
 
@@ -47,7 +47,7 @@ export default function ServicesSection() {
             <AnimatedSection key={service.title} delay={i * 0.1}>
               <Link
                 href={service.href}
-                className="group block h-full rounded-md border border-warm-200 bg-warm-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="group block h-full rounded-lg border border-warm-200 bg-warm-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${service.color}`}>
                   <service.icon size={24} />

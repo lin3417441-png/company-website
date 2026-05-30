@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* 集团介绍 */}
           <div>
-            <Image src="/logo.png" alt="能仁堂" width={80} height={80} className="mb-4 h-20 w-auto rounded-lg bg-white p-1.5" />
+            <Image src="/logo.png" alt="能仁堂" width={80} height={80} className="mb-4 h-20 w-auto rounded-lg bg-warm-50 p-1.5" />
             <p className="text-sm leading-relaxed text-warm-400">
               {SITE_CONFIG.description}
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                 alt="微信公众号二维码"
                 width={128}
                 height={128}
-                className="rounded-md"
+                className="rounded-lg"
               />
               <p className="mt-2 text-sm text-warm-500">微信公众号</p>
             </div>

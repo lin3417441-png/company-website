@@ -14,7 +14,7 @@ export default function TestimonialsSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {testimonials.map((t, i) => (
             <AnimatedSection key={t.id} delay={i * 0.1}>
-              <div className="relative h-full rounded-md bg-white p-6 shadow-sm">
+              <div className="relative h-full rounded-lg bg-warm-50 p-6 shadow-sm transition-all duration-200 ease-out">
                 <Quote size={32} className="mb-3 text-gold-300" />
                 <p className="text-sm leading-relaxed text-ink-600">
                   &ldquo;{t.content}&rdquo;

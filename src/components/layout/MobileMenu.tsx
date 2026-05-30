@@ -32,7 +32,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <div className="flex items-center justify-end p-4">
               <button
                 onClick={onClose}
-                className="rounded-md p-2 text-ink-700 hover:bg-warm-200"
+                className="rounded-lg p-2 text-ink-700 hover:bg-warm-200"
                 aria-label="关闭菜单"
               >
                 <X size={24} />
@@ -44,7 +44,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   key={link.href}
                   href={link.href}
                   onClick={onClose}
-                  className="block rounded-md px-4 py-3 text-lg font-medium text-ink-800 transition-colors hover:bg-primary-50 hover:text-primary-700"
+                  className="block rounded-lg px-4 py-3 text-lg font-medium text-ink-800 transition-colors hover:bg-primary-50 hover:text-primary-700"
                 >
                   {link.label}
                 </Link>

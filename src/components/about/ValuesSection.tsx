@@ -29,14 +29,14 @@ const values = [
 
 export default function ValuesSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-warm-50">
       <div className="container-custom">
         <SectionTitle title="核心价值观" subtitle="能仁堂的精神内核" />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <AnimatedSection key={v.title} delay={i * 0.1}>
-              <div className="h-full rounded-md border border-warm-200 bg-warm-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="h-full rounded-lg border border-warm-200 bg-warm-50 p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary-100">
                   <v.icon size={26} className="text-primary-600" />
                 </div>

@@ -18,7 +18,7 @@ export default function KnowledgeSection() {
             const Icon = icons[i]
             return (
               <AnimatedSection key={project.id} delay={i * 0.08}>
-                <div className="h-full rounded-md bg-white p-5 shadow-sm transition-all duration-300 hover:shadow-md">
+                <div className="h-full rounded-lg bg-warm-50 p-5 shadow-sm transition-all duration-300 hover:shadow-md">
                   <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-100">
                     <Icon size={18} className="text-primary-600" />
                   </div>

@@ -19,7 +19,7 @@ export default function ContactInfo() {
         <h2 className="mb-6 font-serif text-2xl font-bold text-ink-900">联系方式</h2>
         <div className="space-y-4">
           {info.map((item) => (
-            <div key={item.label} className="flex items-start gap-4 rounded-md bg-white p-4 shadow-sm">
+            <div key={item.label} className="flex items-start gap-4 rounded-lg bg-warm-50 p-4 shadow-sm">
               <div className="shrink-0 rounded-lg bg-primary-100 p-2.5">
                 <item.icon size={20} className="text-primary-600" />
               </div>

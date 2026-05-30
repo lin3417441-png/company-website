@@ -13,13 +13,13 @@ const quals = [
 
 export default function QualificationsSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-warm-50">
       <div className="container-custom">
         <SectionTitle title="集团实力" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {quals.map((q, i) => (
             <AnimatedSection key={q.title} delay={i * 0.1}>
-              <div className="flex items-start gap-4 rounded-md border border-warm-200 p-5">
+              <div className="flex items-start gap-4 rounded-lg border border-warm-200 p-5">
                 <div className="shrink-0 rounded-lg bg-gold-100 p-2.5">
                   <q.icon size={22} className="text-gold-600" />
                 </div>

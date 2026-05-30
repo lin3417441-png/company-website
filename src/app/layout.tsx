@@ -1,21 +1,17 @@
-import type { Metadata } from 'next'
-import { Noto_Sans_SC, Noto_Serif_SC } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import ScrollToTop from '@/components/ui/ScrollToTop'
-import { SITE_CONFIG } from '@/lib/constants'
+import type { Metadata } from "next"
+import { Ma_Shan_Zheng } from "next/font/google"
+import "./globals.css"
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
+import ScrollToTop from "@/components/ui/ScrollToTop"
+import { SITE_CONFIG } from "@/lib/constants"
 
-const notoSansSC = Noto_Sans_SC({
-  weight: ['300', '400', '500', '700'],
-  display: 'swap',
-  variable: '--font-noto-sans-sc',
-})
-
-const notoSerifSC = Noto_Serif_SC({
-  weight: ['400', '700'],
-  display: 'swap',
-  variable: '--font-noto-serif-sc',
+const maShanZheng = Ma_Shan_Zheng({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-calligraphy",
+  display: "swap",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -24,14 +20,14 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: ['中医', '中医门诊', '中药', '食养', '研学', '健康养生', '能仁堂'],
+  keywords: ["中医", "中医门诊", "中药", "食养", "研学", "健康养生", "能仁堂"],
   openGraph: {
     title: `${SITE_CONFIG.name} - ${SITE_CONFIG.slogan}`,
     description: SITE_CONFIG.description,
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
-    locale: 'zh_CN',
-    type: 'website',
+    locale: "zh_CN",
+    type: "website",
   },
   robots: {
     index: true,
@@ -45,11 +41,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="zh-CN"
-      className={`${notoSansSC.variable} ${notoSerifSC.variable}`}
-    >
-      <body className="min-h-screen">
+    <html lang="zh-CN">
+      <body className={`min-h-screen ${maShanZheng.variable}`}>
         <Header />
         <main className="pt-16 sm:pt-20">{children}</main>
         <Footer />

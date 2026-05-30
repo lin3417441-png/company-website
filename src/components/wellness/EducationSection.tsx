@@ -7,7 +7,7 @@ import { courses } from '@/lib/services-data'
 
 export default function EducationSection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-warm-50">
       <div className="container-custom">
         <SectionTitle title="中医研学中心" subtitle="将此深心奉医道，是则名为报师恩" />
 
@@ -24,7 +24,7 @@ export default function EducationSection() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {courses.map((course, i) => (
             <AnimatedSection key={course.id} delay={i * 0.1}>
-              <div className="h-full rounded-md border border-warm-200 bg-warm-50 p-6">
+              <div className="h-full rounded-lg border border-warm-200 bg-warm-50 p-6">
                 <h3 className="font-serif text-lg font-bold text-ink-900">
                   {course.name}
                 </h3>

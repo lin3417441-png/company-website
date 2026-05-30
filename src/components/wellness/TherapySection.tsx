@@ -41,7 +41,7 @@ export default function TherapySection() {
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {therapies.map((t, i) => (
             <AnimatedSection key={t.title} delay={i * 0.1}>
-              <div className="h-full rounded-md bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md">
+              <div className="h-full rounded-lg bg-warm-50 p-6 shadow-sm transition-all duration-300 hover:shadow-md">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100">
                   <t.icon size={22} className="text-primary-600" />
                 </div>

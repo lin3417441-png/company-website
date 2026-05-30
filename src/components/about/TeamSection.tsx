@@ -13,7 +13,7 @@ export default function TeamSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member, i) => (
             <AnimatedSection key={member.id} delay={i * 0.1}>
-              <div className="h-full rounded-md bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md">
+              <div className="h-full rounded-lg bg-warm-50 p-6 shadow-sm transition-all duration-300 hover:shadow-md">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-100 font-serif text-xl font-bold text-primary-700">
                   {member.name.slice(0, 1)}
                 </div>

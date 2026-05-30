@@ -34,14 +34,14 @@ const pharmacyFeatures = [
 
 export default function PharmacySection() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-warm-50">
       <div className="container-custom">
         <SectionTitle title="药事与健康服务" subtitle="道地药材，品质保障" />
 
         <div className="grid gap-6 sm:grid-cols-3">
           {otherServices.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
-              <div className="h-full rounded-md border border-warm-200 bg-warm-50 p-6">
+              <div className="h-full rounded-lg border border-warm-200 bg-warm-50 p-6">
                 <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${service.color}`}>
                   <service.icon size={24} />
                 </div>
@@ -54,7 +54,7 @@ export default function PharmacySection() {
 
         {/* 药房特色 */}
         <AnimatedSection>
-          <div className="mt-12 rounded-md bg-primary-50 p-8">
+          <div className="mt-12 rounded-lg bg-primary-50 p-8">
             <h3 className="mb-6 text-center font-serif text-xl font-bold text-ink-900">药房特色服务</h3>
             <div className="grid gap-6 sm:grid-cols-3">
               {pharmacyFeatures.map((f, i) => (
