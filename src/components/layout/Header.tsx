@@ -31,9 +31,11 @@ export default function Header() {
       }`}
     >
       <div className="container-custom flex h-16 items-center justify-between sm:h-20">
-        <Link href="/" className="flex items-center gap-2 rounded bg-warm-50/95 p-1.5 shadow-soft">
-          <Image src="/logo.png" alt="能仁堂" width={40} height={40} className="h-7 w-auto sm:h-9" />
-        </Link>
+          <Link href="/" className="flex items-center gap-2 rounded bg-warm-50/95 p-1.5 shadow-soft">
+           <div className="relative h-7 w-20 sm:h-9 sm:w-24">
+             <Image src="/logo.png" alt="能仁堂" fill className="object-contain" />
+           </div>
+         </Link>
 
         <nav className="hidden items-center gap-2 md:flex" onMouseLeave={() => setHoveredPath(null)}>
           {NAV_LINKS.map((link) => {
