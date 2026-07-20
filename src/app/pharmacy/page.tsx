@@ -130,7 +130,7 @@ export default function PharmacyDetailPage() {
               <Clock size={18} className="mt-1 shrink-0 text-gold-600" />
               <div>
                 <p className="text-xs font-medium tracking-[0.3em] text-ink-400">营业时间</p>
-                <p className="mt-2 font-medium text-ink-800">周一至周日 8:00 - 21:00</p>
+                <p className="mt-2 font-medium text-ink-800">周一至周日 9:00 - 18:00</p>
               </div>
             </div>
           </div>
