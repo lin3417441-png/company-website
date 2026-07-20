@@ -10,20 +10,13 @@ export default function Footer() {
 
       <div className="container-custom relative z-10 pb-12 pt-16 sm:pt-20">
         {/* 品牌行 */}
-        <div className="flex flex-col gap-6 border-b border-warm-100/10 pb-10 sm:flex-row sm:items-end sm:justify-between">
+        <div className="border-b border-warm-100/10 pb-10">
           <div>
             <p className="font-calligraphy text-3xl text-gold-300">{SITE_CONFIG.motto}</p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-warm-400">
               {SITE_CONFIG.description}
             </p>
           </div>
-          <Image
-            src="/logo.png"
-            alt="能仁堂"
-            width={72}
-            height={72}
-            className="h-16 w-auto rounded-lg bg-warm-50 p-1.5"
-          />
         </div>
 
         <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">
