@@ -1,51 +1,49 @@
-'use client'
-
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Button from '@/components/ui/Button'
-import { Pill, Leaf, Cpu, Clock, Shield, Award } from 'lucide-react'
 
 const otherServices = [
   {
-    icon: Pill,
+    number: '壹',
     title: '能仁堂大药房',
     desc: '严选全国道地药材产区优质中药材，提供中药饮片、中成药及专业代煎服务。',
-    color: 'bg-primary-100 text-primary-600',
   },
   {
-    icon: Leaf,
+    number: '贰',
     title: '药食同源门店（食养小屋）',
     desc: '秉承"药食同源"理念，将中医食养智慧与现代营养科学融合，提供个性化食疗方案。',
-    color: 'bg-gold-100 text-gold-600',
   },
   {
-    icon: Cpu,
+    number: '叁',
     title: '健康科技公司',
     desc: '拥有多项自主专利，致力于中医药健康产品的研发与创新，推动中医药现代化。',
-    color: 'bg-cinnabar-100 text-cinnabar-600',
   },
 ]
 
 const pharmacyFeatures = [
-  { icon: Shield, title: '道地药材', desc: '严选全国道地药材产区优质中药材' },
-  { icon: Clock, title: '代煎服务', desc: '现代化煎煮设备，方便快捷' },
-  { icon: Award, title: '专业药师', desc: '执业中药师团队驻店指导' },
+  { title: '道地药材', desc: '严选全国道地药材产区优质中药材' },
+  { title: '代煎服务', desc: '现代化煎煮设备，方便快捷' },
+  { title: '专业药师', desc: '执业中药师团队驻店指导' },
 ]
 
 export default function PharmacySection() {
   return (
-    <section className="section-padding bg-warm-50">
+    <section className="section-padding bg-warm-100">
       <div className="container-custom">
-        <SectionTitle title="药事与健康服务" subtitle="道地药材，品质保障" />
+        <SectionTitle eyebrow="药事服务" title="药事与健康服务" subtitle="道地药材，品质保障。" />
 
-        <div className="grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {otherServices.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
-              <div className="h-full rounded-lg border border-warm-200 bg-warm-50 p-6">
-                <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg ${service.color}`}>
-                  <service.icon size={24} />
+              <div className="group">
+                <div className="relative pb-6">
+                  <span className="font-serif text-2xl text-warm-400 transition-colors duration-300 group-hover:text-gold-500">
+                    {service.number}
+                  </span>
+                  <span className="absolute bottom-0 left-0 h-px w-full bg-warm-300" />
+                  <span className="absolute bottom-0 left-0 h-px w-0 bg-gold-500 transition-all duration-500 ease-out group-hover:w-full" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-ink-900">{service.title}</h3>
+                <h3 className="mt-6 font-serif text-lg font-bold tracking-wide text-ink-900">{service.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-500">{service.desc}</p>
               </div>
             </AnimatedSection>
@@ -54,17 +52,17 @@ export default function PharmacySection() {
 
         {/* 药房特色 */}
         <AnimatedSection>
-          <div className="mt-12 rounded-lg bg-primary-50 p-8">
-            <h3 className="mb-6 text-center font-serif text-xl font-bold text-ink-900">药房特色服务</h3>
-            <div className="grid gap-6 sm:grid-cols-3">
+          <div className="mt-20 rounded-md border-l-4 border-gold-500 bg-warm-50 p-8 shadow-soft sm:p-10">
+            <h3 className="font-serif text-xl font-bold tracking-wide text-ink-900">药房特色服务</h3>
+            <div className="mt-8 grid gap-8 sm:grid-cols-3">
               {pharmacyFeatures.map((f, i) => (
-                <div key={f.title} className="flex items-center gap-3">
-                  <div className="shrink-0 rounded-full bg-primary-100 p-2">
-                    <f.icon size={18} className="text-primary-600" />
-                  </div>
+                <div key={f.title} className="flex items-baseline gap-3">
+                  <span className="font-serif text-sm text-gold-600">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <div>
-                    <p className="font-medium text-ink-900">{f.title}</p>
-                    <p className="text-sm text-ink-500">{f.desc}</p>
+                    <p className="font-serif font-bold text-ink-900">{f.title}</p>
+                    <p className="mt-1 text-sm text-ink-500">{f.desc}</p>
                   </div>
                 </div>
               ))}
@@ -73,7 +71,7 @@ export default function PharmacySection() {
         </AnimatedSection>
 
         <AnimatedSection>
-          <div className="mt-12 text-center">
+          <div className="mt-16">
             <Button href="/contact" variant="primary">
               咨询了解更多
             </Button>

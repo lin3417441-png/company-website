@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* 涓昏壊绯?鈥?娣辨锛堝彇鑷?Logo 娣辫壊锛?*/
+  /* 主色系 —— 深棕（取自 Logo 深色） */
   --color-primary-50: #faf5f0;
   --color-primary-100: #f0e4d8;
   --color-primary-200: #e0c9b1;
@@ -13,7 +13,7 @@
   --color-primary-800: #4a301e;
   --color-primary-900: #3a2518;
 
-  /* 閲戣壊绯?鈥?鏆栭噾锛堝彇鑷?Logo 鑳屾櫙鑹诧級 */
+  /* 金色系 —— 暖金（取自 Logo 背景色） */
   --color-gold-50: #fdf9ef;
   --color-gold-100: #f8efd5;
   --color-gold-200: #f0dfa8;
@@ -25,7 +25,7 @@
   --color-gold-800: #6b541e;
   --color-gold-900: #4a3a15;
 
-  /* 鏈辩爞绾?鈥?CTA 寮鸿皟鑹?*/
+  /* 朱砂红 —— CTA 强调色 */
   --color-cinnabar-50: #fdf2f2;
   --color-cinnabar-100: #fce4e4;
   --color-cinnabar-200: #f9bfbf;
@@ -37,7 +37,7 @@
   --color-cinnabar-800: #702219;
   --color-cinnabar-900: #541a13;
 
-  /* 鏆栫伆 鈥?鑳屾櫙/涓€ц壊 */
+  /* 暖灰 —— 背景/中性色 */
   --color-warm-50: #faf7f2;
   --color-warm-100: #f5f0e8;
   --color-warm-200: #ede5d6;
@@ -49,7 +49,7 @@
   --color-warm-800: #60523d;
   --color-warm-900: #433a2b;
 
-  /* 澧ㄨ壊 鈥?鏂囧瓧 */
+  /* 墨色 —— 文字 */
   --color-ink-50: #f6f6f6;
   --color-ink-100: #e7e7e7;
   --color-ink-200: #d1d1d1;
@@ -62,12 +62,13 @@
   --color-ink-900: #2c2c2c;
   --color-ink-950: #1a1a1a;
 
-  --font-serif: "Noto Serif SC", "Songti SC", "Georgia", serif;
-  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-  --font-calligraphy: var(--font-calligraphy), "Ma Shan Zheng", cursive;
+  /* 字体变量来自 layout.tsx 中 next/font 注入的 CSS 变量 */
+  --font-serif: var(--font-noto-serif), "Songti SC", "Georgia", serif;
+  --font-sans: var(--font-noto-sans), "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-calligraphy: var(--font-ma-shan-zheng), "Ma Shan Zheng", cursive;
 }
 
-/* 鍩虹鏍峰紡 */
+/* 基础样式 */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -82,38 +83,91 @@ body {
   line-height: 1.6;
 }
 
+/* 全局纸张噪点纹理（固定覆盖层，不拦截交互） */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.028'/%3E%3C/svg%3E");
+}
+
 ::selection {
   background-color: var(--color-gold-200);
   color: var(--color-primary-900);
 }
 
-/* 瀹瑰櫒宸ュ叿绫?*/
+/* 入场动画（纯 CSS，避免 JS 水合差异） */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 容器工具类 */
 @layer utilities {
   .container-custom {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-20 sm:py-24 lg:py-32;
   }
 
   .text-balance {
     text-wrap: balance;
   }
 
+  /* 竖排文字（东方编辑感装饰） */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.35em;
+    white-space: nowrap;
+  }
+
+  /* 暖调细线 */
+  .hairline {
+    background-color: var(--color-warm-300);
+    height: 1px;
+  }
+
   .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   }
 
+  /* 暖棕调阴影（取代默认黑影） */
   .shadow-soft {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 30px rgba(58, 37, 24, 0.06);
+  }
+
+  .shadow-lift {
+    box-shadow:
+      0 1px 2px rgba(58, 37, 24, 0.05),
+      0 12px 32px rgba(58, 37, 24, 0.1);
   }
 
   .shadow-gold-glow {
-    box-shadow: 0 8px 30px rgba(212, 168, 58, 0.15);
+    box-shadow: 0 8px 30px rgba(212, 168, 58, 0.18);
   }
 
   .shadow-primary-glow {
-    box-shadow: 0 8px 30px rgba(125, 90, 58, 0.2);
+    box-shadow: 0 8px 30px rgba(125, 90, 58, 0.22);
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade-up-delay {
+    animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
   }
 }

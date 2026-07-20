@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu } from 'lucide-react'
+import { Menu, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { NAV_LINKS } from '@/lib/constants'
+import { NAV_LINKS, SITE_CONFIG } from '@/lib/constants'
 import MobileMenu from './MobileMenu'
 
 export default function Header() {
@@ -17,6 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -25,34 +26,41 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-warm-50/80 shadow-soft backdrop-blur-md'
-          : 'bg-transparent'
+          ? 'border-b border-warm-200 bg-warm-50/85 shadow-soft backdrop-blur-md'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
       <div className="container-custom flex h-16 items-center justify-between sm:h-20">
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="能仁堂" width={40} height={40} className="h-8 w-auto sm:h-10" />
+        <Link href="/" className="flex items-center gap-2 rounded bg-warm-50/95 p-1.5 shadow-soft">
+          <Image src="/logo.png" alt="能仁堂" width={40} height={40} className="h-7 w-auto sm:h-9" />
         </Link>
 
         <nav className="hidden items-center gap-2 md:flex" onMouseLeave={() => setHoveredPath(null)}>
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href
+            const highlighted = isActive || hoveredPath === link.href
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onMouseEnter={() => setHoveredPath(link.href)}
-                className={`relative rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                  isActive || hoveredPath === link.href
-                    ? 'text-primary-700'
-                    : 'text-ink-700'
+                className={`relative rounded-md px-4 py-2 text-sm font-medium tracking-wide transition-colors ${
+                  scrolled
+                    ? highlighted
+                      ? 'text-primary-700'
+                      : 'text-ink-700'
+                    : highlighted
+                      ? 'text-gold-300'
+                      : 'text-warm-200'
                 }`}
               >
                 <span className="relative z-10">{link.label}</span>
                 {hoveredPath === link.href && (
                   <motion.div
                     layoutId="header-hover-bg"
-                    className="absolute inset-0 z-0 rounded-lg bg-primary-50"
+                    className={`absolute inset-0 z-0 rounded-md ${
+                      scrolled ? 'bg-primary-50' : 'bg-warm-100/10'
+                    }`}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -68,13 +76,24 @@ export default function Header() {
           })}
         </nav>
 
-        <button
-          onClick={() => setMobileOpen(true)}
-          className="rounded-lg p-2 text-ink-700 hover:bg-warm-200 md:hidden"
-          aria-label="打开菜单"
-        >
-          <Menu size={24} />
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href={`tel:${SITE_CONFIG.phone}`}
+            className="hidden items-center gap-2 rounded-md bg-gold-500 px-4 py-2 text-sm font-medium tracking-wide text-primary-900 shadow-soft transition-all duration-300 hover:bg-gold-400 hover:shadow-gold-glow md:flex"
+          >
+            <Phone size={15} />
+            {SITE_CONFIG.phone}
+          </a>
+          <button
+            onClick={() => setMobileOpen(true)}
+            className={`rounded-lg p-2 transition-colors md:hidden ${
+              scrolled ? 'text-ink-700 hover:bg-warm-200' : 'text-warm-100 hover:bg-warm-100/10'
+            }`}
+            aria-label="打开菜单"
+          >
+            <Menu size={24} />
+          </button>
+        </div>
       </div>
 
       <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />

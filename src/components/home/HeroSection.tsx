@@ -1,64 +1,94 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { MapPin, Phone, Clock } from 'lucide-react'
 import Button from '@/components/ui/Button'
+import { SITE_CONFIG } from '@/lib/constants'
+
+const heroInfo = [
+  { icon: Phone, label: '预约咨询', value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
+  { icon: MapPin, label: '旗舰门诊', value: SITE_CONFIG.address },
+  { icon: Clock, label: '门诊时间', value: '周一至周日 8:00 - 21:00' },
+]
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900 py-24 sm:py-32 lg:py-40">
-      {/* 装饰性背景 */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-gold-400 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-gold-300 blur-3xl" />
+    <section className="relative overflow-hidden bg-primary-900">
+      {/* 背景层次：径向金光 + 噪点 */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-1/4 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-gold-500/15 blur-3xl" />
+        <div className="absolute bottom-[-30%] left-[-5%] h-[28rem] w-[28rem] rounded-full bg-primary-600/40 blur-3xl" />
+        <div className="absolute inset-0 bg-noise opacity-60" />
       </div>
 
-      <div className="container-custom relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <div className="mx-auto mb-6 inline-block rounded-2xl bg-white/90 p-3 backdrop-blur-sm sm:p-4">
-            <Image src="/logo.png" alt="能仁堂" width={110} height={110} className="h-20 w-auto sm:h-28" />
+      {/* 右侧装饰：书法水印 + 竖排文字（仅大屏） */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-8 top-1/2 hidden -translate-y-1/2 select-none font-calligraphy text-[22rem] leading-none text-warm-100/[0.045] lg:block"
+      >
+        仁
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-24 top-1/2 hidden -translate-y-1/2 select-none vertical-text font-serif text-lg text-warm-300/40 lg:block"
+      >
+        承岐黄薪火 · 守古法初心
+      </div>
+
+      <div className="container-custom relative z-10 pb-20 pt-28 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-44">
+        <div className="max-w-3xl animate-fade-up">
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10 bg-gold-500" />
+            <span className="text-xs font-medium tracking-[0.4em] text-gold-400">
+              始于 {SITE_CONFIG.founded} · 厦门
+            </span>
           </div>
-          <h1 className="font-serif text-4xl font-bold tracking-wider text-white sm:text-5xl lg:text-6xl">
+
+          <h1 className="mt-8 font-serif text-5xl font-bold leading-[1.15] tracking-wide text-warm-50 sm:text-6xl lg:text-7xl">
             能仁堂集团
           </h1>
-          <p className="mt-4 text-lg tracking-[0.3em] text-gold-300 sm:text-xl">
+
+          <p className="mt-6 font-calligraphy text-3xl leading-snug text-gold-300 sm:text-4xl">
             能仁大愿 · 仁心仁术
           </p>
-        </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="mx-auto mt-8 max-w-2xl text-lg leading-loose tracking-wider text-warm-200 sm:text-xl"
-        >
-          传承精华，守正创新 — 集医疗诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团
-        </motion.p>
+          <p className="mt-8 max-w-xl text-base leading-loose tracking-wide text-warm-300 sm:text-lg">
+            传承精华，守正创新。集中医诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团，由多位三甲医院退休主任级专家领衔坐诊。
+          </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-          className="mt-10"
-        >
-          <Button href="/about" variant="secondary" size="lg">
-            了解更多
-          </Button>
-        </motion.div>
-      </div>
+          <div className="mt-12 flex flex-wrap items-center gap-6">
+            <Button href="/contact" variant="secondary" size="lg">
+              预约咨询
+            </Button>
+            <Button
+              href="/about"
+              variant="ghost"
+              size="lg"
+              className="text-warm-200 hover:text-gold-300"
+            >
+              了解集团 &rarr;
+            </Button>
+          </div>
+        </div>
 
-      {/* 底部云纹分隔 */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path
-            d="M0 120L60 105C120 90 240 60 360 52.5C480 45 600 60 720 67.5C840 75 960 75 1080 67.5C1200 60 1320 45 1380 37.5L1440 30V120H0Z"
-            fill="var(--color-warm-50)"
-          />
-        </svg>
+        {/* 底部信息条 */}
+        <div className="mt-20 grid gap-6 border-t border-warm-100/10 pt-8 animate-fade-up-delay sm:mt-24 sm:grid-cols-3 lg:mt-28">
+          {heroInfo.map((item) => (
+            <div key={item.label} className="flex items-center gap-4">
+              <item.icon size={18} className="shrink-0 text-gold-500" />
+              <div>
+                <p className="text-xs tracking-[0.25em] text-warm-400">{item.label}</p>
+                {'href' in item && item.href ? (
+                  <a
+                    href={item.href}
+                    className="mt-1 block font-medium tracking-wide text-warm-100 transition-colors hover:text-gold-300"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="mt-1 font-medium tracking-wide text-warm-100">{item.value}</p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

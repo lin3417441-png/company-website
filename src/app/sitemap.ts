@@ -1,15 +1,7 @@
 import type { MetadataRoute } from 'next'
-import { clinics } from '@/lib/clinics-data'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const clinicUrls = clinics.map((clinic) => ({
-    url: `${SITE_CONFIG.url}/clinics/${clinic.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
   return [
     {
       url: SITE_CONFIG.url,
@@ -47,6 +39,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
-    ...clinicUrls,
   ]
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { X } from 'lucide-react'
@@ -11,6 +12,23 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  useEffect(() => {
+    if (!isOpen) return
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKeyDown)
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = originalOverflow
+    }
+  }, [isOpen, onClose])
+
   return (
     <AnimatePresence>
       {isOpen && (

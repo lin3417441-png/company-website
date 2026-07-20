@@ -1,5 +1,3 @@
-'use client'
-
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Image from 'next/image'
@@ -8,10 +6,10 @@ export default function StorySection() {
   return (
     <section className="section-padding bg-warm-50">
       <div className="container-custom">
-        <SectionTitle title="集团简介" />
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <SectionTitle eyebrow="集团简介" title="承岐黄薪火，守古法初心" />
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection direction="left">
-            <div className="space-y-4 text-ink-600 leading-relaxed">
+            <div className="space-y-4 leading-loose text-ink-600">
               <p>
                 能仁堂集团2016年在美丽的鹭岛厦门成立。集团自创立伊始便始终恪守"能仁大愿，仁心仁术"的初心宗旨，深耕中医药健康领域。
               </p>
@@ -26,19 +24,24 @@ export default function StorySection() {
               <p>
                 主打体质调理、余氏骨伤、肥胖四高、女性康养、结节调理、睡眠调理、小儿推拿、疼痛管理八大中医特色项目，凝练出独具特色的"理疗治其外，中药调其内"诊疗方案，内外兼治，疗效显著，深受患者信赖。
               </p>
-              <p>
-                承岐黄薪火，守古法初心，融时代新思。能仁堂致力传承创新中医药文化，转医疗服务重心，广传康养之道。以"将此深心奉医道，是则名为报师恩"赤诚之心传道授业，赓续中华医脉，护佑万家安康。
+              <p className="border-l-2 border-gold-500 pl-4 font-serif text-ink-800">
+                承岐黄薪火，守古法初心，融时代新思。以"将此深心奉医道，是则名为报师恩"赤诚之心传道授业，赓续中华医脉，护佑万家安康。
               </p>
             </div>
           </AnimatedSection>
           <AnimatedSection direction="right">
-            <div className="relative h-80 overflow-hidden rounded-lg">
-              <Image
-                src="/about-hero.jpg"
-                alt="厦门集美能仁堂中医院"
-                fill
-                className="object-cover"
-              />
+            <div className="relative">
+              {/* 错位金色边框 */}
+              <div aria-hidden className="absolute -right-4 -top-4 h-full w-full rounded-md border border-gold-400/60" />
+              <div className="relative h-80 overflow-hidden rounded-md shadow-lift sm:h-96">
+                <Image
+                  src="/about-hero.jpg"
+                  alt="厦门集美能仁堂中医院"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </AnimatedSection>
         </div>

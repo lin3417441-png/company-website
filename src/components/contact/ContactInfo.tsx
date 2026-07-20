@@ -1,13 +1,11 @@
-'use client'
-
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { MapPin, Phone, Mail, Clock, Search } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/constants'
 
 const info = [
   { icon: MapPin, label: '集团地址', value: SITE_CONFIG.address },
-  { icon: Phone, label: '咨询电话', value: SITE_CONFIG.phone },
-  { icon: Mail, label: '电子邮箱', value: SITE_CONFIG.email },
+  { icon: Phone, label: '咨询电话', value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
+  { icon: Mail, label: '电子邮箱', value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
   { icon: Clock, label: '工作时间', value: '周一至周日 9:00 - 18:00' },
   { icon: Search, label: '美团搜索', value: '美团搜索"能仁堂"也可找到我们' },
 ]
@@ -15,18 +13,21 @@ const info = [
 export default function ContactInfo() {
   return (
     <AnimatedSection direction="left">
-      <div>
-        <h2 className="mb-6 font-serif text-2xl font-bold text-ink-900">联系方式</h2>
-        <div className="space-y-4">
+      <div className="mx-auto max-w-2xl">
+        <div className="space-y-0">
           {info.map((item) => (
-            <div key={item.label} className="flex items-start gap-4 rounded-lg bg-warm-50 p-4 shadow-sm">
-              <div className="shrink-0 rounded-lg bg-primary-100 p-2.5">
-                <item.icon size={20} className="text-primary-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-ink-400">{item.label}</p>
+            <div key={item.label} className="flex items-center gap-5 border-t border-warm-300 py-5 last:border-b">
+              <item.icon size={18} className="shrink-0 text-gold-600" />
+              <p className="w-24 shrink-0 text-xs font-medium tracking-[0.25em] text-ink-400 sm:w-28">
+                {item.label}
+              </p>
+              {'href' in item && item.href ? (
+                <a href={item.href} className="font-medium text-ink-800 transition-colors hover:text-primary-600">
+                  {item.value}
+                </a>
+              ) : (
                 <p className="font-medium text-ink-800">{item.value}</p>
-              </div>
+              )}
             </div>
           ))}
         </div>

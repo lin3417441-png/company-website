@@ -1,5 +1,3 @@
-'use client'
-
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
 import { teamMembers } from '@/lib/services-data'
