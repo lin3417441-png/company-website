@@ -61,6 +61,38 @@ User-agent: YuanbaoBot
 Allow: /
 Crawl-Delay: 10
 
+User-agent: DoubaoBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: TongyiBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: ERNIEBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: ZhipuBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: BaichuanBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: YiBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: iFlytekBot
+Allow: /
+Crawl-Delay: 10
+
+User-agent: QuarkBot
+Allow: /
+Crawl-Delay: 10
+
 User-agent: Baiduspider
 Allow: /
 Crawl-Delay: 10
