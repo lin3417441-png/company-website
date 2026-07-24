@@ -3,15 +3,70 @@ import Image from 'next/image'
 import { MapPin, Clock } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import JsonLd from '@/components/ui/JsonLd'
+import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '能仁堂药业',
   description: '以常用药品和康复医疗器械为双核心，专注为周边社区居民提供一站式健康用品服务',
 }
 
+const pharmacyPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Pharmacy',
+  name: '能仁堂药业',
+  description: '以常用药品和康复医疗器械为双核心，专注为周边社区居民提供一站式健康用品服务',
+  url: `${SITE_CONFIG.url}/pharmacy`,
+  parentOrganization: {
+    '@type': 'Organization',
+    name: SITE_CONFIG.name,
+    url: SITE_CONFIG.url,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '福建省厦门市湖里区祥店路岭南里 48-101-1 号（建发中央天成东门南侧商铺）',
+    addressLocality: '厦门市',
+    addressRegion: '福建省',
+    addressCountry: 'CN',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: '药品与医疗器械',
+    itemListElement: [
+      {
+        '@type': 'OfferCatalog',
+        name: '常用药品',
+        description: '涵盖家庭常备药、常用中西药品、外用制剂等',
+      },
+      {
+        '@type': 'OfferCatalog',
+        name: '康复医疗器械',
+        description: '轮椅、拐杖、助行器、医用护理床、血压计、血糖仪及各类理疗器械',
+      },
+    ],
+  },
+}
+
 export default function PharmacyDetailPage() {
   return (
     <>
+      <JsonLd data={pharmacyPageJsonLd} />
       <PageHero
         title="能仁堂药业"
         subtitle="买得放心、用得安心 — 您身边的健康补给站"
