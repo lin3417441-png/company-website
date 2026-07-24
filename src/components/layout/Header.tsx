@@ -86,6 +86,13 @@ export default function Header() {
             <Phone size={15} />
             {SITE_CONFIG.phone}
           </a>
+          <a
+            href={`tel:${SITE_CONFIG.phone}`}
+            className="flex items-center justify-center rounded-md bg-gold-500 p-2 text-primary-900 shadow-soft transition-all duration-300 hover:bg-gold-400 hover:shadow-gold-glow md:hidden"
+            aria-label="拨打电话"
+          >
+            <Phone size={20} />
+          </a>
           <button
             onClick={() => setMobileOpen(true)}
             className={`rounded-lg p-2 transition-colors md:hidden ${

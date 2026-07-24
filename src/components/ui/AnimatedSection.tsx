@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -18,10 +18,6 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
-  // 挂载前（含 SSR 与客户端首次渲染）始终以可见态渲染，
-  // 避免 framer-motion SSR 输出与客户端初始值不一致导致的水合警告。
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
 
   const variants = {
     up: { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } },
@@ -34,7 +30,7 @@ export default function AnimatedSection({
     <motion.div
       ref={ref}
       initial={false}
-      animate={!mounted || isInView ? 'visible' : 'hidden'}
+      animate={isInView ? 'visible' : 'hidden'}
       variants={variants[direction]}
       transition={{ duration: 0.6, delay, ease: 'easeOut' }}
       className={className}

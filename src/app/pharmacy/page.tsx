@@ -43,13 +43,13 @@ export default function PharmacyDetailPage() {
                 </div>
                 <h2 className="mt-4 font-serif text-3xl font-bold tracking-wide text-ink-900">关于能仁堂药业</h2>
                 <p className="mt-6 leading-loose tracking-wide text-ink-600">
-                  能仁堂药业公司以"常用药品 + 康复医疗器械"为双核心，专注为周边社区居民提供一站式健康用品服务。
+                  能仁堂药业公司以「常用药品 + 康复医疗器械」为双核心，专注为周边社区居民提供一站式健康用品服务。
                 </p>
                 <p className="mt-4 leading-loose tracking-wide text-ink-600">
                   公司经营品类涵盖家庭常备药、常用中西药品、外用制剂等，品类齐全、质量可靠，满足日常用药需求。同时，公司精选引入轮椅、拐杖、助行器、医用护理床、血压计、血糖仪及各类理疗器械等合规医疗器械，为术后康复、慢病管理及老年人居家照护提供专业设备支持。
                 </p>
                 <p className="mt-4 leading-loose tracking-wide text-ink-600">
-                  依托严格的质量管理体系与执业药师驻店指导，能仁堂药业从源头把关、规范经营，确保每一件药品与器械来源可溯、安全合规，致力成为居民身边"买得放心、用得安心"的健康补给站。
+                  依托严格的质量管理体系与执业药师驻店指导，能仁堂药业从源头把关、规范经营，确保每一件药品与器械来源可溯、安全合规，致力成为居民身边「买得放心、用得安心」的健康补给站。
                 </p>
               </div>
             </AnimatedSection>
