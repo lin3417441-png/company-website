@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   name: '能仁堂集团',
   slogan: '能仁大愿，仁心仁术',
   description: '能仁堂集团致力于推动中医药健康文化的创造性转化与创新性发展。是一家集中医诊疗、康复疗养、文化研学、健康科技于一体的综合医疗集团',
-  url: 'https://www.nengrentang.com',
+  url: 'https://nengrentang.com.cn',
   address: '厦门市思明区湖滨南路8-2-1',
   phone: '0592-5156156',
   email: '858888363@qq.com',
