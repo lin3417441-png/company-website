@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Ma_Shan_Zheng, Noto_Serif_SC } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
@@ -8,22 +8,25 @@ import JsonLd from "@/components/ui/JsonLd"
 import RevealController from "@/components/ui/RevealController"
 import { SITE_CONFIG, GROUP_ADDRESS } from "@/lib/constants"
 
-// 标题用 Noto Serif SC；正文走系统字体（见 globals.css 的 --font-sans），
-// 避免为中文正文拉取大量 CJK unicode-range 分片。
-const notoSerifSC = Noto_Serif_SC({
-  weight: ["400", "700"],
-  subsets: ["latin"],
+// 标题用本地化的 Noto Serif SC 子集；正文走系统字体（见 globals.css 的 --font-sans）。
+// 子集仅保留静态页面实际渲染的字形，构建时不再依赖 Google Fonts。
+const notoSerifSC = localFont({
+  src: [
+    { path: "../../public/fonts/noto-serif-sc-400-subset.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/noto-serif-sc-700-subset.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-noto-serif",
   display: "swap",
+  adjustFontFallback: false,
 })
 
-// 书法体仅用于十余个装饰字，不 preload，按 unicode-range 按需加载。
-const maShanZheng = Ma_Shan_Zheng({
+// 书法体只保留实际使用的装饰字形，避免下载完整字库。
+const maShanZheng = localFont({
+  src: "../../public/fonts/ma-shan-zheng-400-subset.woff2",
   weight: "400",
-  subsets: ["latin"],
   variable: "--font-ma-shan-zheng",
   display: "swap",
-  preload: false,
+  adjustFontFallback: false,
 })
 
 /**
