@@ -5,11 +5,12 @@ import PageHero from '@/components/ui/PageHero'
 import Button from '@/components/ui/Button'
 import JsonLd from '@/components/ui/JsonLd'
 import { Phone, MessageCircle, MapPin } from 'lucide-react'
-import { SITE_CONFIG } from '@/lib/constants'
+import { GROUP_ADDRESS, SITE_CONFIG, openingHoursSpec } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '联系我们',
   description: '欢迎联系能仁堂集团，获取专业的中医健康咨询和服务支持',
+  alternates: { canonical: '/contact' },
 }
 
 const MAP_URL =
@@ -37,9 +38,27 @@ const faqPageJsonLd = {
   })),
 }
 
+const contactPageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: SITE_CONFIG.name,
+  description: SITE_CONFIG.description,
+  url: `${SITE_CONFIG.url}/contact`,
+  telephone: SITE_CONFIG.phone,
+  email: SITE_CONFIG.email,
+  address: GROUP_ADDRESS,
+  geo: {
+    '@type': 'GeoCoordinates',
+    longitude: 118.085,
+    latitude: 24.485,
+  },
+  openingHoursSpecification: openingHoursSpec('clinic'),
+}
+
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactPageJsonLd} />
       <PageHero
         title="联系我们"
         subtitle="期待您的咨询，我们将竭诚为您服务"

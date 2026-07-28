@@ -113,9 +113,6 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-User-agent: Baiduspider
-Allow: /
-
 # === 通用规则 ===
 
 User-agent: *

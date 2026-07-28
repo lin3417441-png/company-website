@@ -5,11 +5,12 @@ import ValuesSection from '@/components/about/ValuesSection'
 import TimelineSection from '@/components/about/TimelineSection'
 import QualificationsSection from '@/components/about/QualificationsSection'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG } from '@/lib/constants'
+import { GROUP_ADDRESS, SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '关于我们',
   description: `了解${SITE_CONFIG.name}的历史传承、核心价值观和专业团队`,
+  alternates: { canonical: '/about' },
 }
 
 const aboutPageJsonLd = {
@@ -23,13 +24,7 @@ const aboutPageJsonLd = {
       telephone: SITE_CONFIG.phone,
       email: SITE_CONFIG.email,
       foundingDate: SITE_CONFIG.founded,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '湖滨南路 8-2-1',
-        addressLocality: '厦门市',
-        addressRegion: '福建省',
-        addressCountry: 'CN',
-      },
+      address: GROUP_ADDRESS,
       medicalSpecialty: [
         'TraditionalChineseMedicine',
         'Acupuncture',

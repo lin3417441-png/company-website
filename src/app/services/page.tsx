@@ -7,7 +7,8 @@ import { SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '医疗服务',
-  description: '能仁堂集团旗下四家门诊部、一家二级中医院、大药房及健康科技公司，提供专业中医诊疗和中药服务',
+  description: '能仁堂集团旗下八家医疗健康机构，提供专业中医诊疗和中药服务',
+  alternates: { canonical: '/services' },
 }
 
 const servicesFaqItems = [
@@ -21,7 +22,7 @@ const servicesFaqItems = [
   },
   {
     q: '能仁堂的门诊时间是什么时候？',
-    a: '能仁堂门诊时间为周一至周日 8:00 - 21:00。',
+    a: '能仁堂门诊时间为周一至周日 8:30 - 21:00。',
   },
 ]
 
@@ -31,7 +32,7 @@ const servicesPageJsonLd = {
     {
       '@type': 'MedicalBusiness',
       name: `${SITE_CONFIG.name} - 医疗服务`,
-      description: '能仁堂集团旗下四家门诊部、一家二级中医院、大药房及健康科技公司，提供专业中医诊疗和中药服务',
+      description: '能仁堂集团旗下四家门诊部、一家二级中医院、大药房、健康科技公司及中医药研学中心，共八家机构，提供专业中医诊疗和中药服务',
       url: `${SITE_CONFIG.url}/services`,
       parentOrganization: {
         '@type': 'Organization',
@@ -80,6 +81,30 @@ export default function ServicesPage() {
 
       <ClinicsSection />
       <PharmacySection />
+
+      <section className="section-padding bg-warm-50">
+        <div className="container-custom mx-auto max-w-3xl">
+          <div className="mb-12">
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-gold-500" />
+              <span className="text-xs font-medium tracking-[0.35em] text-gold-600">常见问题</span>
+            </div>
+            <h2 className="mt-4 font-serif text-3xl font-bold tracking-wide text-ink-900">
+              医疗服务问答
+            </h2>
+          </div>
+          <div>
+            {servicesFaqItems.map((faq) => (
+              <details key={faq.q} className="group border-t border-warm-300 last:border-b">
+                <summary className="cursor-pointer py-5 font-serif font-bold tracking-wide text-ink-900 transition-colors marker:text-gold-500 hover:text-primary-700">
+                  {faq.q}
+                </summary>
+                <p className="pb-5 text-sm leading-relaxed text-ink-500">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   )
 }

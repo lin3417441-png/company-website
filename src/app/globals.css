@@ -62,9 +62,11 @@
   --color-ink-900: #2c2c2c;
   --color-ink-950: #1a1a1a;
 
-  /* 字体变量来自 layout.tsx 中 next/font 注入的 CSS 变量 */
-  --font-serif: var(--font-noto-serif), "Songti SC", "Georgia", serif;
-  --font-sans: var(--font-noto-sans), "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  /* 标题与书法体来自 layout.tsx 中 next/font 注入的 CSS 变量；
+     正文使用系统字体，不加载 web font（中文正文的 CJK 分片开销过大） */
+  --font-serif: var(--font-noto-serif), "Songti SC", "SimSun", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
   --font-calligraphy: var(--font-ma-shan-zheng), "Ma Shan Zheng", cursive;
 }
 
@@ -109,6 +111,38 @@ body::after {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ---------------------------------------------------------------
+   滚动入场（data-reveal）
+
+   隐藏态由 <html class="reveal-ready"> 把关，该 class 只在 layout.tsx
+   的内联脚本里添加。因此：
+     - 无 JS / 脚本失败 / prefers-reduced-motion → 不加 class → 内容直接可见
+     - SSR 产出的 HTML 里不含 opacity:0 内联样式，爬虫与 LCP 都不受影响
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal] {
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .reveal-ready [data-reveal]:not(.is-revealed) {
+    opacity: 0;
+  }
+
+  .reveal-ready [data-reveal="up"]:not(.is-revealed) {
+    transform: translateY(40px);
+  }
+
+  .reveal-ready [data-reveal="left"]:not(.is-revealed) {
+    transform: translateX(-40px);
+  }
+
+  .reveal-ready [data-reveal="right"]:not(.is-revealed) {
+    transform: translateX(40px);
   }
 }
 

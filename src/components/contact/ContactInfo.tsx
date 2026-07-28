@@ -1,12 +1,12 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, BUSINESS_HOURS } from '@/lib/constants'
 
 const info = [
   { icon: MapPin, label: '集团地址', value: SITE_CONFIG.address },
   { icon: Phone, label: '咨询电话', value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
   { icon: Mail, label: '电子邮箱', value: SITE_CONFIG.email, href: `mailto:${SITE_CONFIG.email}` },
-  { icon: Clock, label: '工作时间', value: '周一至周日 9:00 - 18:00' },
+  { icon: Clock, label: '门诊时间', value: BUSINESS_HOURS.clinic.display },
 ]
 
 export default function ContactInfo() {

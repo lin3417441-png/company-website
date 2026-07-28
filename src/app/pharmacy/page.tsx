@@ -4,11 +4,18 @@ import { MapPin, Clock } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG } from '@/lib/constants'
+import {
+  BUSINESS_HOURS,
+  PHARMACY_ADDRESS,
+  PHARMACY_ADDRESS_DISPLAY,
+  SITE_CONFIG,
+  openingHoursSpec,
+} from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '能仁堂药业',
   description: '以常用药品和康复医疗器械为双核心，专注为周边社区居民提供一站式健康用品服务',
+  alternates: { canonical: '/pharmacy' },
 }
 
 const pharmacyPageJsonLd = {
@@ -22,29 +29,8 @@ const pharmacyPageJsonLd = {
     name: SITE_CONFIG.name,
     url: SITE_CONFIG.url,
   },
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '福建省厦门市湖里区祥店路岭南里 48-101-1 号（建发中央天成东门南侧商铺）',
-    addressLocality: '厦门市',
-    addressRegion: '福建省',
-    addressCountry: 'CN',
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-      ],
-      opens: '09:00',
-      closes: '18:00',
-    },
-  ],
+  address: PHARMACY_ADDRESS,
+  openingHoursSpecification: openingHoursSpec('pharmacy'),
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: '药品与医疗器械',
@@ -178,14 +164,14 @@ export default function PharmacyDetailPage() {
               <MapPin size={18} className="mt-1 shrink-0 text-gold-600" />
               <div>
                 <p className="text-xs font-medium tracking-[0.3em] text-ink-400">门店地址</p>
-                <p className="mt-2 font-medium leading-relaxed text-ink-800">福建省厦门市湖里区祥店路岭南里48-101-1号（建发中央天成东门南侧商铺）</p>
+                <p className="mt-2 font-medium leading-relaxed text-ink-800">{PHARMACY_ADDRESS_DISPLAY}</p>
               </div>
             </div>
             <div className="flex items-start gap-4 border-t border-warm-300 pt-6">
               <Clock size={18} className="mt-1 shrink-0 text-gold-600" />
               <div>
                 <p className="text-xs font-medium tracking-[0.3em] text-ink-400">营业时间</p>
-                <p className="mt-2 font-medium text-ink-800">周一至周日 9:00 - 18:00</p>
+                <p className="mt-2 font-medium text-ink-800">{BUSINESS_HOURS.pharmacy.display}</p>
               </div>
             </div>
           </div>

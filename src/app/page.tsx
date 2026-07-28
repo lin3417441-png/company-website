@@ -5,7 +5,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection'
 import KnowledgeSection from '@/components/home/KnowledgeSection'
 import CTASection from '@/components/home/CTASection'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, GROUP_ADDRESS, openingHoursSpec } from '@/lib/constants'
 
 const medicalClinicJsonLd = {
   '@context': 'https://schema.org',
@@ -27,13 +27,7 @@ const medicalClinicJsonLd = {
     'HerbalMedicine',
     'PreventiveMedicine',
   ],
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '湖滨南路8-2-1',
-    addressLocality: '厦门市',
-    addressRegion: '福建省',
-    addressCountry: 'CN',
-  },
+  address: GROUP_ADDRESS,
   areaServed: [
     {
       '@type': 'City',
@@ -63,22 +57,7 @@ const medicalClinicJsonLd = {
     '@type': 'QuantitativeValue',
     value: '100+',
   },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-      ],
-      opens: '08:00',
-      closes: '21:00',
-    },
-  ],
+  openingHoursSpecification: openingHoursSpec('clinic'),
 }
 
 export default function HomePage() {

@@ -1,11 +1,11 @@
 import { MapPin, Phone, Clock } from 'lucide-react'
 import Button from '@/components/ui/Button'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, BUSINESS_HOURS } from '@/lib/constants'
 
 const heroInfo = [
   { icon: Phone, label: '预约咨询', value: SITE_CONFIG.phone, href: `tel:${SITE_CONFIG.phone}` },
   { icon: MapPin, label: '旗舰门诊', value: SITE_CONFIG.address },
-  { icon: Clock, label: '门诊时间', value: '周一至周日 8:00 - 21:00' },
+  { icon: Clock, label: '门诊时间', value: BUSINESS_HOURS.clinic.display },
 ]
 
 export default function HeroSection() {

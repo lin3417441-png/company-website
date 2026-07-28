@@ -8,6 +8,7 @@ import { SITE_CONFIG } from '@/lib/constants'
 export const metadata: Metadata = {
   title: '食养研学',
   description: '能仁堂药食同源门店（食养小屋）和中医药研学中心，搭建医道文化传播平台，让中医智慧融入生活',
+  alternates: { canonical: '/wellness' },
 }
 
 const wellnessPageJsonLd = {
