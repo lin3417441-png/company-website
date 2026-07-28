@@ -3,7 +3,7 @@ import PageHero from '@/components/ui/PageHero'
 import TherapySection from '@/components/wellness/TherapySection'
 import EducationSection from '@/components/wellness/EducationSection'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG } from '@/lib/constants'
+import { SITE_CONFIG, openingHoursSpec } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '食养研学',
@@ -24,6 +24,7 @@ const wellnessPageJsonLd = {
         name: SITE_CONFIG.name,
         url: SITE_CONFIG.url,
       },
+      openingHoursSpecification: openingHoursSpec('clinic'),
       availableService: [
         { '@type': 'Service', name: '节气食养', description: '根据二十四节气变化，为您定制应季食疗方案' },
         { '@type': 'Service', name: '养生茶饮', description: '精选药食同源食材，调配专属养生茶方' },
