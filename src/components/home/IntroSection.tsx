@@ -11,8 +11,11 @@ const stats = [
 
 export default function IntroSection() {
   return (
-    <section className="border-b border-warm-200 bg-warm-50 py-14 sm:py-16">
-      <div className="container-custom">
+    <section className="border-b border-warm-200 bg-warm-50 py-14 sm:py-16 relative">
+      {/* Task 5: 添加点阵背景增强视觉层次 */}
+      <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden="true" />
+
+      <div className="container-custom relative z-10">
         <AnimatedSection>
           <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
             {stats.map((stat, i) => (
@@ -22,11 +25,12 @@ export default function IntroSection() {
                   i > 0 ? 'lg:border-l lg:border-warm-300' : ''
                 } ${i % 2 === 1 ? 'border-l border-warm-300 lg:border-l' : ''}`}
               >
-                <dd className="font-serif text-4xl font-bold tracking-wide text-primary-800 sm:text-5xl">
+                {/* Task 6: 戏剧化字号对比 — 超大数字 + 微小标签 */}
+                <dd className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-primary-800">
                   {stat.number}
-                  <span className="ml-1 text-xl text-gold-600">{stat.suffix}</span>
+                  <span className="text-2xl sm:text-3xl text-gold-600">{stat.suffix}</span>
                 </dd>
-                <dt className="mt-2 text-xs font-medium tracking-[0.3em] text-ink-500 sm:text-sm">
+                <dt className="mt-3 text-caption text-ink-500">
                   {stat.label}
                 </dt>
               </div>

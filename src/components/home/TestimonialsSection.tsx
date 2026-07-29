@@ -4,11 +4,12 @@ import { testimonials } from '@/lib/services-data'
 
 export default function TestimonialsSection() {
   return (
-    <section className="section-padding bg-warm-50">
+    <section className="section-padding bg-gradient-to-b from-warm-50 to-warm-200">
       <div className="container-custom">
         <SectionTitle
           eyebrow="患者心声"
           title="他们的信任，是我们最大的动力"
+          align="center"
         />
 
         <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

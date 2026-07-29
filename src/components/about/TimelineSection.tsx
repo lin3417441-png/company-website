@@ -4,13 +4,14 @@ import { timeline } from '@/lib/services-data'
 
 export default function TimelineSection() {
   return (
-    <section className="section-padding bg-warm-50">
+    <section className="section-padding bg-warm-100">
       <div className="container-custom">
         <SectionTitle eyebrow="发展历程" title="一步一个脚印，稳健前行" />
 
-        <div className="relative mx-auto max-w-3xl">
-          {/* 竖线 */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-warm-300 sm:left-1/2 sm:-translate-x-px" />
+        <div className="rounded-2xl bg-white p-8 shadow-lift border border-warm-200 sm:p-12">
+          <div className="relative mx-auto max-w-3xl">
+            {/* 竖线 */}
+            <div className="absolute left-4 top-0 bottom-0 w-px bg-warm-300 sm:left-1/2 sm:-translate-x-px" />
 
           <div className="space-y-10">
             {timeline.map((event, i) => (
@@ -23,7 +24,7 @@ export default function TimelineSection() {
                   i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'
                 }`}>
                   {/* 菱形节点 */}
-                  <div className="absolute left-4 top-1.5 h-3 w-3 -translate-x-1/2 rotate-45 border-2 border-gold-500 bg-warm-50 sm:left-1/2" />
+                  <div className="absolute left-4 top-1.5 h-3 w-3 -translate-x-1/2 rotate-45 border-2 border-gold-500 bg-white sm:left-1/2" />
 
                   <div className={`sm:w-1/2 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12'} pl-10 sm:pl-0`}>
                     <span className="font-serif text-3xl font-bold tracking-wide text-gold-600">{event.year}</span>
@@ -33,6 +34,7 @@ export default function TimelineSection() {
                 </div>
               </AnimatedSection>
             ))}
+          </div>
           </div>
         </div>
       </div>

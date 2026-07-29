@@ -5,12 +5,18 @@ import ValuesSection from '@/components/about/ValuesSection'
 import TimelineSection from '@/components/about/TimelineSection'
 import QualificationsSection from '@/components/about/QualificationsSection'
 import JsonLd from '@/components/ui/JsonLd'
-import { GROUP_ADDRESS, SITE_CONFIG } from '@/lib/constants'
+import { GROUP_ADDRESS, OG_IMAGE, SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '关于我们',
   description: `了解${SITE_CONFIG.name}的历史传承、核心价值观和专业团队`,
   alternates: { canonical: '/about' },
+  openGraph: {
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const aboutPageJsonLd = {

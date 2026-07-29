@@ -34,14 +34,16 @@ export default function HeroSection() {
 
       <div className="container-custom relative z-10 pb-20 pt-28 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-44">
         <div className="max-w-3xl animate-fade-up">
+          {/* Task 6: 使用 text-caption 微小文本 */}
           <div className="flex items-center gap-3">
             <span className="h-px w-10 bg-gold-500" />
-            <span className="text-xs font-medium tracking-[0.4em] text-gold-400">
+            <span className="text-caption text-gold-400">
               始于 {SITE_CONFIG.founded} · 厦门
             </span>
           </div>
 
-          <h1 className="mt-8 font-serif text-5xl font-bold leading-[1.15] tracking-wide text-warm-50 sm:text-6xl lg:text-7xl">
+          {/* Task 6: 使用超大标题 text-display */}
+          <h1 className="mt-8 font-serif text-display leading-[1.05] text-warm-50">
             能仁堂集团
           </h1>
 
@@ -54,7 +56,7 @@ export default function HeroSection() {
           </p>
 
           <div className="mt-12 flex flex-wrap items-center gap-6">
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button href="/contact" variant="cinnabar" size="lg">
               预约咨询
             </Button>
             <Button
@@ -74,7 +76,8 @@ export default function HeroSection() {
             <div key={item.label} className="flex items-center gap-4">
               <item.icon size={18} className="shrink-0 text-gold-500" />
               <div>
-                <p className="text-xs tracking-[0.25em] text-warm-400">{item.label}</p>
+                {/* Task 6: 使用 text-caption */}
+                <p className="text-caption text-warm-400">{item.label}</p>
                 {'href' in item && item.href ? (
                   <a
                     href={item.href}

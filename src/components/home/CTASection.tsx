@@ -1,5 +1,6 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import Button from '@/components/ui/Button'
+import Eyebrow from '@/components/ui/Eyebrow'
 import { SITE_CONFIG } from '@/lib/constants'
 
 export default function CTASection() {
@@ -19,12 +20,9 @@ export default function CTASection() {
 
       <div className="container-custom relative z-10">
         <AnimatedSection className="max-w-2xl">
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-gold-500" />
-            <span className="text-xs font-medium tracking-[0.4em] text-gold-400">
-              预约咨询
-            </span>
-          </div>
+          <Eyebrow variant="line" light>
+            预约咨询
+          </Eyebrow>
           <h2 className="mt-6 font-serif text-3xl font-bold leading-snug tracking-wide text-warm-50 sm:text-4xl lg:text-5xl">
             开启您的健康之旅
           </h2>
@@ -36,7 +34,7 @@ export default function CTASection() {
             ，或留下您的需求。
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-6">
-            <Button href="/contact" variant="secondary" size="lg">
+            <Button href="/contact" variant="cinnabar" size="lg">
               联系我们
             </Button>
             <Button

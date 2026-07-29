@@ -204,4 +204,56 @@ body::after {
   .animate-fade-up-delay {
     animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
   }
+
+  /* ============================================================
+     Task 6 — 字体层级对比工具类
+     ============================================================ */
+
+  /* Display — 超大标题（Hero、Landing） */
+  .text-display {
+    @apply text-6xl lg:text-8xl font-bold tracking-tight;
+  }
+
+  /* H1 — 页面主标题 */
+  .text-h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wide;
+  }
+
+  /* H2 — Section 标题 */
+  .text-h2 {
+    @apply text-3xl sm:text-4xl font-bold tracking-wide;
+  }
+
+  /* H3 — 卡片/组件标题 */
+  .text-h3 {
+    @apply text-xl sm:text-2xl font-bold tracking-wide;
+  }
+
+  /* Caption — 辅助说明 */
+  .text-caption {
+    @apply text-xs tracking-wider uppercase text-ink-400;
+  }
+
+  /* Overline — 眉题 */
+  .text-overline {
+    @apply text-xs tracking-[0.35em] uppercase font-medium;
+  }
+
+  /* ============================================================
+     Task 5 — 背景图案（视觉锚点）
+     ============================================================ */
+
+  /* 点阵背景 */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, var(--color-gold-300) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* 网格背景 */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(var(--color-warm-300) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-warm-300) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
 }

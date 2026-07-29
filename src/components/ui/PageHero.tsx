@@ -1,3 +1,5 @@
+import Eyebrow from '@/components/ui/Eyebrow'
+
 interface PageHeroProps {
   title: string
   subtitle: string
@@ -21,13 +23,11 @@ export default function PageHero({ title, subtitle, eyebrow = '能仁堂集团' 
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="flex items-center gap-3">
-          <span className="h-px w-10 bg-gold-500" />
-          <span className="text-xs font-medium tracking-[0.4em] text-gold-400">
-            {eyebrow}
-          </span>
-        </div>
-        <h1 className="mt-6 font-serif text-4xl font-bold tracking-wide text-warm-50 sm:text-5xl">
+        <Eyebrow variant="line" light>
+          {eyebrow}
+        </Eyebrow>
+        {/* Task 6: 使用 text-h1 页面主标题 */}
+        <h1 className="mt-6 font-serif text-h1 text-warm-50">
           {title}
         </h1>
         <p className="mt-5 max-w-xl leading-loose text-warm-300">

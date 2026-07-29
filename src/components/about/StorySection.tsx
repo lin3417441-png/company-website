@@ -4,8 +4,16 @@ import Image from 'next/image'
 
 export default function StorySection() {
   return (
-    <section className="section-padding bg-warm-50">
-      <div className="container-custom">
+    <section className="section-padding bg-warm-50 relative overflow-hidden">
+      {/* Task 5: 大号书法字视觉锚点 — "仁"字代表核心价值 */}
+      <span
+        aria-hidden="true"
+        className="absolute -top-16 -left-12 font-calligraphy text-[16rem] text-gold-500/[0.03] select-none pointer-events-none"
+      >
+        仁
+      </span>
+
+      <div className="container-custom relative z-10">
         <SectionTitle eyebrow="集团简介" title="承岐黄薪火，守古法初心" />
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <AnimatedSection direction="left">

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MapPin, Clock } from 'lucide-react'
 import PageHero from '@/components/ui/PageHero'
 import AnimatedSection from '@/components/ui/AnimatedSection'
+import Eyebrow from '@/components/ui/Eyebrow'
 import JsonLd from '@/components/ui/JsonLd'
 import {
   BUSINESS_HOURS,
@@ -16,6 +17,19 @@ export const metadata: Metadata = {
   title: '能仁堂药业',
   description: '以常用药品和康复医疗器械为双核心，专注为周边社区居民提供一站式健康用品服务',
   alternates: { canonical: '/pharmacy' },
+  openGraph: {
+    images: [
+      {
+        url: '/pharmacy.jpg',
+        width: 800,
+        height: 600,
+        alt: '能仁堂药业门店',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const pharmacyPageJsonLd = {
@@ -78,10 +92,7 @@ export default function PharmacyDetailPage() {
             </AnimatedSection>
             <AnimatedSection direction="right">
               <div>
-                <div className="flex items-center gap-3">
-                  <span className="h-px w-8 bg-gold-500" />
-                  <span className="text-xs font-medium tracking-[0.35em] text-gold-600">关于我们</span>
-                </div>
+                <Eyebrow variant="line">关于我们</Eyebrow>
                 <h2 className="mt-4 font-serif text-3xl font-bold tracking-wide text-ink-900">关于能仁堂药业</h2>
                 <p className="mt-6 leading-loose tracking-wide text-ink-600">
                   能仁堂药业公司以「常用药品 + 康复医疗器械」为双核心，专注为周边社区居民提供一站式健康用品服务。
@@ -101,9 +112,8 @@ export default function PharmacyDetailPage() {
       {/* 双核心业务 */}
       <section className="section-padding bg-warm-100">
         <div className="container-custom">
-          <div className="mb-14 flex items-center gap-3">
-            <span className="h-px w-8 bg-gold-500" />
-            <span className="text-xs font-medium tracking-[0.35em] text-gold-600">双核心业务</span>
+          <div className="mb-14">
+            <Eyebrow variant="line">双核心业务</Eyebrow>
           </div>
           <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
             <AnimatedSection>
@@ -155,9 +165,8 @@ export default function PharmacyDetailPage() {
       {/* 门店信息 */}
       <section className="section-padding bg-warm-100">
         <div className="container-custom">
-          <div className="mb-14 flex items-center gap-3">
-            <span className="h-px w-8 bg-gold-500" />
-            <span className="text-xs font-medium tracking-[0.35em] text-gold-600">门店信息</span>
+          <div className="mb-14">
+            <Eyebrow variant="line">门店信息</Eyebrow>
           </div>
           <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
             <div className="flex items-start gap-4 border-t border-warm-300 pt-6">

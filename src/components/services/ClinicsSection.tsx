@@ -1,5 +1,6 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
+import Eyebrow from '@/components/ui/Eyebrow'
 import Badge from '@/components/ui/Badge'
 import { clinics } from '@/lib/clinics-data'
 import { MapPin, Clock, Phone } from 'lucide-react'
@@ -9,14 +10,23 @@ const hospital = clinics.find((c) => c.type === 'hospital')
 
 export default function ClinicsSection() {
   return (
-    <section className="section-padding bg-warm-50">
-      <div className="container-custom">
+    <section className="section-padding bg-warm-50 relative overflow-hidden">
+      {/* Task 5: 大号书法字视觉锚点 — "医"字代表医疗服务 */}
+      <span
+        aria-hidden="true"
+        className="absolute top-20 right-0 font-calligraphy text-[18rem] text-primary-500/[0.025] select-none pointer-events-none"
+      >
+        医
+      </span>
+
+      <div className="container-custom relative z-10">
         {/* 二级中医院 */}
         {hospital && (
           <AnimatedSection>
             <div className="mb-20 rounded-md border-l-4 border-gold-500 bg-warm-100 p-8 shadow-soft sm:p-10">
-              <p className="text-xs font-medium tracking-[0.35em] text-gold-600">二级中医院</p>
-              <h3 className="mt-3 font-serif text-2xl font-bold tracking-wide text-ink-900">{hospital.name}</h3>
+              <Eyebrow variant="simple">二级中医院</Eyebrow>
+              {/* Task 6: 使用 text-h3 卡片标题 */}
+              <h3 className="mt-3 font-serif text-h3 text-ink-900">{hospital.name}</h3>
               <p className="mt-3 max-w-3xl leading-relaxed text-ink-600">{hospital.description}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {hospital.specialties.map((s) => (
@@ -44,7 +54,8 @@ export default function ClinicsSection() {
           {outpatientClinics.map((clinic, i) => (
             <AnimatedSection key={clinic.id} delay={i * 0.1}>
               <div className="group h-full border-t border-warm-300 pt-6">
-                <h3 className="font-serif text-xl font-bold tracking-wide text-ink-900 transition-colors group-hover:text-primary-700">
+                {/* Task 6: 使用 text-h3 卡片标题 */}
+                <h3 className="font-serif text-h3 text-ink-900 transition-colors group-hover:text-primary-700">
                   {clinic.name}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-500">

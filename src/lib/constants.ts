@@ -79,6 +79,21 @@ export function openingHoursSpec(type: keyof typeof BUSINESS_HOURS) {
   }))
 }
 
+/** 食养小屋联系信息 */
+export const WELLNESS_STORE = {
+  name: '能仁堂食养小屋',
+  address: '厦门市湖里区岭南里47-102号',
+  phone: '13860424145',
+} as const
+
+/** 默认 OG 图片（layout 和各子页面通用） */
+export const OG_IMAGE = {
+  url: '/about-hero.jpg',
+  width: 1706,
+  height: 1279,
+  alt: `${SITE_CONFIG.name} - ${SITE_CONFIG.slogan}`,
+} as const
+
 export const FEATURE_PROJECTS = [
   { id: 1, name: '体质调理', description: '根据中医九种体质辨识，提供个性化的体质调理方案。' },
   { id: 2, name: '余氏骨伤', description: '传承余氏骨伤流派，运用传统手法治疗各类骨伤疾患。' },

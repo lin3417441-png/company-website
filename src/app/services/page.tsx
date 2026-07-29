@@ -2,13 +2,20 @@ import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import ClinicsSection from '@/components/services/ClinicsSection'
 import PharmacySection from '@/components/services/PharmacySection'
+import Eyebrow from '@/components/ui/Eyebrow'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG } from '@/lib/constants'
+import { OG_IMAGE, SITE_CONFIG } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '医疗服务',
   description: '能仁堂集团旗下八家医疗健康机构，提供专业中医诊疗和中药服务',
   alternates: { canonical: '/services' },
+  openGraph: {
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const servicesFaqItems = [
@@ -82,14 +89,15 @@ export default function ServicesPage() {
       <ClinicsSection />
       <PharmacySection />
 
-      <section className="section-padding bg-warm-50">
-        <div className="container-custom mx-auto max-w-3xl">
+      <section className="section-padding bg-warm-50 relative">
+        {/* Task 5: 添加网格背景图案 */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-20" aria-hidden="true" />
+
+        <div className="container-custom mx-auto max-w-3xl relative z-10">
           <div className="mb-12">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-gold-500" />
-              <span className="text-xs font-medium tracking-[0.35em] text-gold-600">常见问题</span>
-            </div>
-            <h2 className="mt-4 font-serif text-3xl font-bold tracking-wide text-ink-900">
+            <Eyebrow variant="line">常见问题</Eyebrow>
+            {/* Task 6: 使用 text-h2 标题 */}
+            <h2 className="mt-4 font-serif text-h2 text-ink-900">
               医疗服务问答
             </h2>
           </div>

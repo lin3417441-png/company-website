@@ -3,12 +3,18 @@ import PageHero from '@/components/ui/PageHero'
 import TherapySection from '@/components/wellness/TherapySection'
 import EducationSection from '@/components/wellness/EducationSection'
 import JsonLd from '@/components/ui/JsonLd'
-import { SITE_CONFIG, openingHoursSpec } from '@/lib/constants'
+import { OG_IMAGE, SITE_CONFIG, openingHoursSpec } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: '食养研学',
   description: '能仁堂药食同源门店（食养小屋）和中医药研学中心，搭建医道文化传播平台，让中医智慧融入生活',
   alternates: { canonical: '/wellness' },
+  openGraph: {
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 const wellnessPageJsonLd = {

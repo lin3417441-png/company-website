@@ -90,8 +90,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // suppressHydrationWarning：revealScript 在 hydration 前给 <html> 加
+  // reveal-ready class，SSR HTML 里没有它，React 会报 mismatch。
+  // 这是有意为之的预 hydration DOM 变更，只需抑制这一个属性的告警。
   return (
-    <html lang="zh-CN" data-scroll-behavior="smooth">
+    <html lang="zh-CN" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`min-h-screen ${notoSerifSC.variable} ${maShanZheng.variable}`}
       >

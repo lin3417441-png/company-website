@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'cinnabar'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,6 +15,8 @@ const variantStyles: Record<ButtonVariant, string> = {
     'bg-primary-600 text-white shadow-soft hover:bg-primary-700 hover:shadow-primary-glow hover:-translate-y-0.5',
   secondary:
     'bg-gold-500 text-primary-900 shadow-soft hover:bg-gold-400 hover:shadow-gold-glow hover:-translate-y-0.5',
+  cinnabar:
+    'bg-cinnabar-500 text-white shadow-soft hover:bg-cinnabar-600 hover:shadow-md hover:-translate-y-0.5',
   outline:
     'border border-primary-300 text-primary-700 hover:border-primary-500 hover:bg-primary-50',
   ghost:

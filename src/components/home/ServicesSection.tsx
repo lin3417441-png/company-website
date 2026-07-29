@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
+import { YinYangDecoration } from '@/components/ui/Decorations'
 
 const services = [
   {
@@ -31,8 +32,11 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="section-padding bg-warm-50">
-      <div className="container-custom">
+    <section className="section-padding bg-gradient-to-br from-warm-50 via-warm-50 to-primary-50/40 relative overflow-hidden">
+      {/* Task 5: 阴阳图案装饰 — 代表中医阴阳平衡理念 */}
+      <YinYangDecoration />
+
+      <div className="container-custom relative z-10">
         <SectionTitle
           eyebrow="全产业链生态"
           title="医疗诊疗 · 康复疗养 · 文化研学 · 健康科技"
@@ -43,23 +47,27 @@ export default function ServicesSection() {
           {services.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
               <Link href={service.href} className="group flex h-full flex-col">
-                <div className="relative pb-6">
-                  <span className="font-serif text-2xl text-warm-400 transition-colors duration-300 group-hover:text-gold-500">
-                    {service.number}
-                  </span>
-                  <span className="absolute bottom-0 left-0 h-px w-full bg-warm-300" />
-                  <span className="absolute bottom-0 left-0 h-px w-0 bg-gold-500 transition-all duration-500 ease-out group-hover:w-full" />
+                <div className="relative overflow-hidden rounded-xl bg-white p-8 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+                  {/* 装饰背景 */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+
+                  <div className="relative">
+                    {/* 圆形数字徽章 */}
+                    <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold-100 text-gold-600 font-serif text-lg">
+                      {service.number}
+                    </span>
+                    <h3 className="mt-4 font-serif text-xl font-bold tracking-wide text-ink-900">
+                      {service.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-500">
+                      {service.description}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary-600 transition-colors group-hover:text-primary-800">
+                      了解更多
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                    </span>
+                  </div>
                 </div>
-                <h3 className="mt-6 font-serif text-xl font-bold tracking-wide text-ink-900 transition-colors group-hover:text-primary-700">
-                  {service.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-500">
-                  {service.description}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary-600 transition-colors group-hover:text-primary-800">
-                  了解更多
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
-                </span>
               </Link>
             </AnimatedSection>
           ))}
