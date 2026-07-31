@@ -1,16 +1,12 @@
 import type { NextConfig } from "next";
 
-// revealScript 内联块的 SHA-256 哈希（见 src/app/layout.tsx）。
-// 脚本内容变动时需重新计算并同步更新此处与 netlify.toml。
-// 计算方法（PowerShell）：
-//   $bytes = [System.Text.Encoding]::UTF8.GetBytes($script)
-//   [Convert]::ToBase64String(([System.Security.Cryptography.SHA256]::Create()).ComputeHash($bytes))
-const REVEAL_SCRIPT_HASH = "'sha256-rwg5DgS+sHhJ5UqZclNEmsqKtRaoMKeL8v5duu5n36A='";
-
 // 字体已全部自托管（public/fonts/），不再依赖 Google Fonts CDN。
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' ${REVEAL_SCRIPT_HASH}`,
+  // App Router 的静态 HTML 包含 Next.js Flight/RSC 内联脚本；没有它们，
+  // loading.tsx 永远不会被替换为页面内容。Next.js 官方文档对静态页面
+  // 推荐使用 unsafe-inline；需要 nonce 时必须改为动态渲染。
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",

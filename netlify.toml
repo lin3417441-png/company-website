@@ -17,9 +17,9 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-    # revealScript hash：见 next.config.ts 和 src/app/layout.tsx。脚本变动时同步更新。
-    # 字体已全部自托管，不再需要 fonts.googleapis.com / fonts.gstatic.com。
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-rwg5DgS+sHhJ5UqZclNEmsqKtRaoMKeL8v5duu5n36A='; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; object-src 'none'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    # 静态 Next.js App Router 页面需要执行内联 Flight/RSC hydration 脚本，
+    # 否则 loading.tsx 会一直显示。字体已全部自托管。
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; object-src 'none'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/_next/static/*"
