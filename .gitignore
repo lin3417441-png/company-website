@@ -20,13 +20,16 @@
 .DS_Store
 *.pem
 
+
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# env files — 仅追踪 .env.example，所有含真实值的文件均忽略
+.env*
+!.env.example
+*.key
 
 # vercel
 .vercel
