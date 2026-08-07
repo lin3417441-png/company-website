@@ -89,11 +89,8 @@ export default function ServicesPage() {
       <ClinicsSection />
       <PharmacySection />
 
-      <section className="section-padding bg-warm-50 relative">
-        {/* Task 5: 添加网格背景图案 */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-20" aria-hidden="true" />
-
-        <div className="container-custom mx-auto max-w-3xl relative z-10">
+      <section className="section-padding bg-warm-50">
+        <div className="container-custom mx-auto max-w-3xl">
           <div className="mb-12">
             <Eyebrow variant="line">常见问题</Eyebrow>
             {/* Task 6: 使用 text-h2 标题 */}

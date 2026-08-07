@@ -50,7 +50,7 @@ export default function ClinicsSection() {
 
         {/* 门诊部 */}
         <SectionTitle eyebrow="名医荟萃" title="四家专业门诊部" />
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="grid gap-x-14 gap-y-14 sm:grid-cols-2">
           {outpatientClinics.map((clinic, i) => (
             <AnimatedSection key={clinic.id} delay={i * 0.1}>
               <div className="group h-full border-t border-warm-300 pt-6">

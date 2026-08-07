@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MapPin, Phone, Mail } from 'lucide-react'
+import Seal from '@/components/ui/Seal'
 import { SITE_CONFIG, NAV_LINKS } from '@/lib/constants'
 
 export default function Footer() {
@@ -9,14 +10,21 @@ export default function Footer() {
       <div className="absolute inset-0 bg-noise opacity-60" />
 
       <div className="container-custom relative z-10 pb-12 pt-16 sm:pt-20">
-        {/* 品牌行 */}
-        <div className="border-b border-warm-100/10 pb-10">
+        {/* 品牌行。
+            印章只在这里落一枚，作为整站的落款 —— 印章的重量来自稀有，
+            多处出现就成了装饰图案。 */}
+        <div className="flex items-start justify-between gap-8 border-b border-warm-100/10 pb-10">
           <div>
             <p className="font-calligraphy text-3xl text-gold-300">{SITE_CONFIG.motto}</p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-warm-400">
               {SITE_CONFIG.description}
             </p>
           </div>
+          <Seal
+            size={64}
+            idPrefix="footer-seal"
+            className="mt-1 hidden shrink-0 text-cinnabar-400/70 sm:block"
+          />
         </div>
 
         <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:grid-cols-3">

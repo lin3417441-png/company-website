@@ -1,6 +1,5 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
-import { LotusDecoration } from '@/components/ui/Decorations'
 
 const values = [
   {
@@ -27,24 +26,25 @@ const values = [
 
 export default function ValuesSection() {
   return (
-    <section className="section-padding bg-gradient-to-br from-primary-50/20 via-warm-50 to-gold-50/30 relative overflow-hidden">
-      {/* Task 5: 莲花装饰 — 代表清净和谐 */}
-      <LotusDecoration />
-
-      <div className="container-custom relative z-10">
+    <section className="section-padding bg-warm-50">
+      <div className="container-custom">
         <SectionTitle eyebrow="精神内核" title="核心价值观" />
 
-        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-14 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <AnimatedSection key={v.title} delay={i * 0.1}>
-              <div className="group border-2 border-warm-300 rounded-lg p-6 transition-all duration-300 hover:border-gold-500 hover:shadow-md">
-                <div className="flex items-baseline gap-3 mb-4">
-                  <span className="font-serif text-3xl text-gold-600">{v.number}</span>
-                  <h3 className="font-serif text-xl font-bold tracking-wide text-ink-900">
+              {/* 原先是 border-2 圆角描边框 + hover 投影，观感是 UI 控件。
+                  改为顶部单线界格，与站内 KnowledgeSection 的写法统一。 */}
+              <div className="group h-full border-t border-warm-300 pt-6 transition-colors duration-300 hover:border-gold-500">
+                <div className="mb-4 flex items-baseline gap-3">
+                  <span className="font-serif text-3xl text-warm-500 transition-colors duration-300 group-hover:text-gold-600">
+                    {v.number}
+                  </span>
+                  <h3 className="font-serif text-xl tracking-wide text-ink-900">
                     {v.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed text-ink-500">{v.description}</p>
+                <p className="text-sm leading-loose text-ink-600">{v.description}</p>
               </div>
             </AnimatedSection>
           ))}

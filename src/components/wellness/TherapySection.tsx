@@ -30,7 +30,7 @@ export default function TherapySection() {
           subtitle="秉承「药食同源」的传统理念，将中医食养智慧与现代营养科学相融合，为您提供个性化的食疗方案和养生指导。"
         />
 
-        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <div className="grid gap-x-14 gap-y-14 sm:grid-cols-3">
           {therapies.map((t, i) => (
             <AnimatedSection key={t.title} delay={i * 0.1}>
               <div className="group">

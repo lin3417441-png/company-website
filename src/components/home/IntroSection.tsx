@@ -11,11 +11,8 @@ const stats = [
 
 export default function IntroSection() {
   return (
-    <section className="border-b border-warm-200 bg-warm-50 py-14 sm:py-16 relative">
-      {/* Task 5: 添加点阵背景增强视觉层次 */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30" aria-hidden="true" />
-
-      <div className="container-custom relative z-10">
+    <section className="border-b border-warm-200 bg-warm-50 py-16 sm:py-20">
+      <div className="container-custom">
         <AnimatedSection>
           <dl className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
             {stats.map((stat, i) => (

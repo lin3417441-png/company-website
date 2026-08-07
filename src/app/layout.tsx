@@ -8,8 +8,10 @@ import JsonLd from "@/components/ui/JsonLd"
 import RevealController from "@/components/ui/RevealController"
 import { SITE_CONFIG, GROUP_ADDRESS } from "@/lib/constants"
 
-// 标题用本地化的 Noto Serif SC 子集；正文走系统字体（见 globals.css 的 --font-sans）。
-// 子集仅保留静态页面实际渲染的字形，构建时不再依赖 Google Fonts。
+// 标题与正文都用本地化的 Noto Serif SC 子集（宋体），不再依赖系统无衬线。
+// 子集按站内静态页面实际渲染的字形生成：约 666 个汉字 + 全部可打印 ASCII
+// （电话、年份、邮箱、100+ 必须和汉字落在同一套字里，否则粗细对不上）。
+// display: "swap" —— 字体到达前先用 fallback 显示，不阻塞首屏文字。
 const notoSerifSC = localFont({
   src: [
     { path: "../../public/fonts/noto-serif-sc-400-subset.woff2", weight: "400", style: "normal" },

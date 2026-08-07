@@ -62,8 +62,10 @@
   --color-ink-900: #2c2c2c;
   --color-ink-950: #1a1a1a;
 
-  /* 标题与书法体来自 layout.tsx 中 next/font 注入的 CSS 变量；
-     正文使用系统字体，不加载 web font（中文正文的 CJK 分片开销过大） */
+  /* 字体来自 layout.tsx 中 next/font 注入的 CSS 变量。
+     正文也走 --font-serif（宋体）—— 子集已扩到覆盖正文全部字形。
+     --font-sans 保留作为无衬线备用（目前站内无调用，留给将来可能的
+     数据表格等需要等宽感的场景；删掉也不影响渲染）。 */
   --font-serif: var(--font-noto-serif), "Songti SC", "SimSun", Georgia, serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
@@ -77,25 +79,31 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 正文改宋体。
+   系统无衬线（PingFang / 微软雅黑）是现代 UI 的字，和宣纸的气质冲突；
+   宋体的横细竖粗、起收笔的顿挫本就是从刻本来的，与纸同源。
+
+   之所以现在敢用：子集已重新生成，覆盖站内实际渲染的 666 个汉字 +
+   全部可打印 ASCII（电话、年份、邮箱、100+ 都要落在同一套字里，
+   否则数字会回退到别的字体，粗细对不上）。
+
+   line-height 从 1.6 提到 1.75：宋体的字面比无衬线小、笔画更细，
+   行距不够会显得挤且发灰。 */
 body {
   background-color: var(--color-warm-50);
   color: var(--color-ink-900);
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
-/* 全局纸张噪点纹理（固定覆盖层，不拦截交互） */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  pointer-events: none;
-  opacity: 0.5;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.028'/%3E%3C/svg%3E");
-}
+/* 纸感由 warm-50 本身的暖白承担，不再叠全屏噪点层。
+   原先的 body::after 是 fixed + z-index:90 + mix-blend-mode:multiply：
+     - 层级高于所有内容，照片、二维码、金色按钮都被乘算压灰；
+     - fixed 让纹理钉在视口上，滚动时观感是纱窗而不是纸；
+     - 全视口 turbulence 逐帧参与合成，移动端滚动开销明显。
+   而屏幕本来也传递不了多少纸的手感 —— 干净的暖白比一层脏纹理
+   更接近宣纸。收益小于代价，去掉。 */
 
 ::selection {
   background-color: var(--color-gold-200);
@@ -148,12 +156,15 @@ body::after {
 
 /* 容器工具类 */
 @layer utilities {
+  /* 内容栏从 max-w-7xl(1280px) 收到 6xl(1152px)，左右留白同时加宽。
+     只改这一个数值，全站（含 Header/Footer）的纵向对齐关系不变。
+     留白是宣纸美学里最有效的一件事，比任何装饰都管用。 */
   .container-custom {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-6xl px-6 sm:px-8 lg:px-12;
   }
 
   .section-padding {
-    @apply py-20 sm:py-24 lg:py-32;
+    @apply py-24 sm:py-28 lg:py-40;
   }
 
   .text-balance {
@@ -209,14 +220,19 @@ body::after {
      Task 6 — 字体层级对比工具类
      ============================================================ */
 
-  /* Display — 超大标题（Hero、Landing） */
+  /* Display — 超大标题（Hero、Landing）
+
+     原先是 font-bold + tracking-tight：Noto Serif SC 的 700 字重在 8xl
+     尺度下非常块状，紧字距又把几个汉字挤成一坨墨团，观感是"企业官网"。
+     书法审美里的贵气来自瘦、疏、宽字距 —— 改 400 字重 + 正字距后
+     字号还能再放大一档，重量反而更轻。 */
   .text-display {
-    @apply text-6xl lg:text-8xl font-bold tracking-tight;
+    @apply text-6xl lg:text-8xl font-normal tracking-[0.08em];
   }
 
-  /* H1 — 页面主标题 */
+  /* H1 — 页面主标题（同 display 的理由，减到 400 字重） */
   .text-h1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wide;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-normal tracking-[0.06em];
   }
 
   /* H2 — Section 标题 */
@@ -229,31 +245,20 @@ body::after {
     @apply text-xl sm:text-2xl font-bold tracking-wide;
   }
 
-  /* Caption — 辅助说明 */
+  /* Caption — 辅助说明。
+     原先是 ink-400(#8c8c8c)，在 warm-50 底上仅约 3.15:1，text-xs 尺寸下
+     不达 WCAG AA 要求的 4.5:1。改用 ink-600 后约 6.6:1。
+     uppercase 对 CJK 是空操作，去掉以免误导（本站 caption 全是中文）。 */
   .text-caption {
-    @apply text-xs tracking-wider uppercase text-ink-400;
+    @apply text-xs tracking-wider text-ink-600;
   }
 
-  /* Overline — 眉题 */
+  /* Overline — 眉题（同样去掉对中文无效的 uppercase） */
   .text-overline {
-    @apply text-xs tracking-[0.35em] uppercase font-medium;
+    @apply text-xs tracking-[0.35em] font-medium;
   }
 
-  /* ============================================================
-     Task 5 — 背景图案（视觉锚点）
-     ============================================================ */
-
-  /* 点阵背景 */
-  .bg-dot-pattern {
-    background-image: radial-gradient(circle, var(--color-gold-300) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-
-  /* 网格背景 */
-  .bg-grid-pattern {
-    background-image:
-      linear-gradient(var(--color-warm-300) 1px, transparent 1px),
-      linear-gradient(90deg, var(--color-warm-300) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
+  /* 点阵背景（bg-dot-pattern）与网格背景（bg-grid-pattern）已删除：
+     32px 金色点阵与 48px 网格是现代科技风的图案语言，与宣纸的空净互斥。
+     两处调用改为留白。 */
 }

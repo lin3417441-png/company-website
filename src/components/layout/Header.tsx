@@ -9,26 +9,26 @@ import { NAV_LINKS, SITE_CONFIG } from '@/lib/constants'
 import MobileMenu from './MobileMenu'
 
 export default function Header() {
-  // 修复 hydration 错误：初始状态必须与 SSR 一致（false），
-  // 不能在首次渲染时就根据 window.scrollY 设置，否则会导致 SSR/客户端不匹配
+  // 初始状态必须与 SSR 一致（false）：不能在首次渲染时就读 window.scrollY，
+  // 否则 SSR/客户端不匹配。
+  //
+  // 原先还有一个 mounted 状态，在 effect 里同步 setMounted(true) 来"等 hydration
+  // 结束"——那是多余的，而且触发 react-hooks/set-state-in-effect（effect 内同步
+  // setState 会引起级联渲染）。scrolled 本身初值就是 false，只在 effect 里才变，
+  // 而 effect 必然在 hydration 之后执行，所以直接用 scrolled 已经是安全的。
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
   const [hoveredPath, setHoveredPath] = useState<string | null>(null)
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // 标记组件已挂载，避免 hydration 阶段应用滚动状态
-    setMounted(true)
-
     const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll() // 挂载后立即检查滚动位置
+    onScroll() // 挂载后立即检查滚动位置（首屏可能已不在顶部，例如带 hash 进入）
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // 在 hydration 完成前（mounted=false），强制使用未滚动状态，避免 SSR mismatch
-  const isScrolled = mounted && scrolled
+  const isScrolled = scrolled
 
   return (
     <header
@@ -39,9 +39,24 @@ export default function Header() {
       }`}
     >
       <div className="container-custom flex h-16 items-center justify-between sm:h-20">
-        <Link href="/" className="flex items-center gap-2 rounded bg-warm-50/95 p-1.5 shadow-soft">
+        {/* logo.png 的字与纹是深棕（约 #6b4a2e）、底透明，直接放到深色 Hero 上
+            会几乎看不见 —— 原先那块 bg-warm-50/95 白底就是为此加的，但在深色
+            Hero 上它是一块漂浮的白色补丁。
+            改为未滚动时用滤镜把深棕反相成暖白：brightness(0) 先压成纯黑，
+            invert 反成纯白，再用 sepia + 轻微 hue/saturate 把冷白烘回暖白，
+            与站内 warm-100 同调。滚动后 Header 变浅底，logo 恢复原色。 */}
+        <Link href="/" className="flex items-center gap-2">
           <div className="relative h-7 w-20 sm:h-9 sm:w-24">
-            <Image src="/logo.png" alt="能仁堂" fill className="object-contain" />
+            <Image
+              src="/logo.png"
+              alt="能仁堂"
+              fill
+              className={`object-contain transition-[filter] duration-300 ${
+                isScrolled
+                  ? ''
+                  : '[filter:brightness(0)_invert(1)_sepia(0.28)_saturate(1.4)_hue-rotate(-8deg)]'
+              }`}
+            />
           </div>
         </Link>
 

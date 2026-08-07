@@ -1,7 +1,6 @@
 import AnimatedSection from '@/components/ui/AnimatedSection'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Button from '@/components/ui/Button'
-import { HerbalDecoration } from '@/components/ui/Decorations'
 
 const otherServices = [
   {
@@ -30,10 +29,9 @@ const pharmacyFeatures = [
 export default function PharmacySection() {
   return (
     <section className="section-padding bg-gradient-to-br from-warm-100 via-warm-50 to-primary-50/20 relative overflow-hidden">
-      {/* Task 5: 草药装饰 — 代表药材与药食同源 */}
-      <HerbalDecoration className="opacity-[0.06] top-auto bottom-0" />
-
-      {/* Task 5: 大号书法字 — "药"字代表药事服务 */}
+      {/* 大号书法字 — "药"字代表药事服务。
+          原先这里还有一个七片对称叶子的草药 SVG，在 0.06 透明度下只是
+          一团认不出的形状 —— 既非纹样也非画。书法水印本身已是更强的锚点。 */}
       <span
         aria-hidden="true"
         className="absolute top-1/3 left-1/2 -translate-x-1/2 font-calligraphy text-[20rem] text-gold-500/[0.02] select-none pointer-events-none"
@@ -44,7 +42,7 @@ export default function PharmacySection() {
       <div className="container-custom relative z-10">
         <SectionTitle eyebrow="药事服务" title="药事与健康服务" subtitle="道地药材，品质保障。" />
 
-        <div className="grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <div className="grid gap-x-14 gap-y-14 sm:grid-cols-3">
           {otherServices.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
               <div className="group">
